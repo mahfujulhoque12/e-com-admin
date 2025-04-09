@@ -65,7 +65,7 @@ const PaymentFormContent = () => {
   if (error) return <div>Error fetching Payment Details</div>;
 
   return (
-    <div className="p-5 mt-5 rounded-md shadow-md bg-white ">
+    <div className="p-5 mt-5 rounded-md shadow-md bg-white md:mt-0 ">
       <form onSubmit={handleSubmit(onSubmit, onError)}>
         {/* Payment Type Section */}
         <h1 className="text-[#333B4E] font-semibold text-xl ">Payment Type</h1>

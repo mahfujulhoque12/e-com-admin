@@ -12,8 +12,10 @@ const Page = () => {
   };
   return (
     <div>
-      <Topbar handleHamburgerClick={handleHamburgerClick} />
-      <FileManagerWrapper/>
+      <div className="sticky top-0 left-0 z-50  ">
+        <Topbar handleHamburgerClick={handleHamburgerClick} />
+      </div>
+      <FileManagerWrapper />
     </div>
   );
 };

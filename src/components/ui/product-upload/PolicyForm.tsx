@@ -163,7 +163,7 @@ const PolicyFormContent = () => {
   if (error) return <div>Error fetching Product Details profile</div>;
 
   return (
-    <div className="p-5 rounded-md shadow-md bg-white mt-5">
+    <div className="p-5 rounded-md shadow-md bg-white mt-5 md:mt-0">
       <h1 className="text-[#333B4E] font-semibold text-xl ">Policy</h1>
       <form onSubmit={handleSubmit(onSubmit, onError)}>
         {/* First Row */}

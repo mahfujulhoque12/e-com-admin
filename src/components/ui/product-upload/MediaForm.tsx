@@ -89,7 +89,7 @@ const MediaForm = () => {
   };
 
   return (
-    <div className="p-5 bg-white rounded-md mt-5">
+    <div className="p-5 bg-white rounded-md mt-5 md:mt-0">
       <form onSubmit={handleSubmit(onSubmit, onError)}>
         <h1 className="text-[#333B4E] text-xl font-semibold ">Media</h1>
         <div className="w-full md:w-1/2 dark:bg-darkButtonBg rounded-md bg-white">

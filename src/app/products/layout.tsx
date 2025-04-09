@@ -9,33 +9,33 @@ const tabs = [
   {
     label: "Product list",
 
-    href: "/products-main",
+    href: "/products",
   },
 
   {
     label: "Order List",
 
-    href: "/products-main/order-list",
+    href: "/products/order-list",
   },
   {
     label: "Customer List",
 
-    href: "/products-main/customer-list",
+    href: "/products/customer-list",
   },
   {
     label: "Payment List",
 
-    href: "/products-main/payment-list",
+    href: "/products/payment-list",
   },
   {
     label: "Review List",
 
-    href: "/products-main/review-list",
+    href: "/products/review-list",
   },
   {
     label: "Banner List",
 
-    href: "/products-main/banner-list",
+    href: "/products/banner-list",
   },
 ];
 export default function ProductsLayout({

@@ -114,7 +114,7 @@ const ProductDetailsForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit, onError)}>
-        <div className="shadow-md mt-5 p-5 bg-white rounded-md  ">
+        <div className="shadow-md mt-5 lg:mt-0 p-5 bg-white rounded-md  ">
           <h1 className="text-[#333B4E] text-xl font-semibold ">
             Product Information
           </h1>
