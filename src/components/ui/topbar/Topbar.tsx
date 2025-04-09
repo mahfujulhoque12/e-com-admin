@@ -70,7 +70,7 @@ const Topbar: React.FC<TopBarProps> = ({
         >
           <BiMenu className="w-6 h-6 text-gray-700 " />
         </button>
-        <button className=" flex gap-2.5 items-center text-3xl text-[#333B4E] font-semibold m-0 md:mt-0">
+        <button className=" flex gap-2.5 items-center text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#333B4E] font-semibold m-0 md:mt-0">
           <RiDashboardLine />
           Bread cumb
         </button>

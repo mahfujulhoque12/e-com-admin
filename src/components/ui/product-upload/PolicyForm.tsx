@@ -163,7 +163,7 @@ const PolicyFormContent = () => {
   if (error) return <div>Error fetching Product Details profile</div>;
 
   return (
-    <div className="p-5 rounded-md shadow-md bg-white">
+    <div className="p-5 rounded-md shadow-md bg-white mt-5">
       <h1 className="text-[#333B4E] font-semibold text-xl ">Policy</h1>
       <form onSubmit={handleSubmit(onSubmit, onError)}>
         {/* First Row */}
@@ -254,7 +254,7 @@ const PolicyFormContent = () => {
         <div className="mt-6 flex justify-end gap-3">
           <button
             type="button"
-            className="px-4 py-2 text-sm font-medium text-gray-700  border border-gray-300  rounded-md hover:bg-red-400  hover:text-white transition-all duration-300"
+            className="px-2 md:px-4 flex py-1 md:py-2 text-xs sm:text-sm font-medium text-gray-700  border border-gray-300  rounded-md hover:bg-red-400  hover:text-white transition-all duration-300"
             onClick={() => dispatch(resetPolicy())} // Reset form
           >
             Cancel
@@ -262,7 +262,7 @@ const PolicyFormContent = () => {
 
           <button
             type="submit"
-            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-all"
+            className="px-2 md:px-4 flex py-1 md:py-2 text-xs sm:text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700 transition-all"
           >
             {policyId ? "Update" : "Save"}
           </button>

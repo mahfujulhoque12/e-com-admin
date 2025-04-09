@@ -114,7 +114,7 @@ const ProductDetailsForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit, onError)}>
-        <div className="shadow-md p-5 bg-white rounded-md  ">
+        <div className="shadow-md mt-5 p-5 bg-white rounded-md  ">
           <h1 className="text-[#333B4E] text-xl font-semibold ">
             Product Information
           </h1>
@@ -446,7 +446,7 @@ const ProductDetailsForm = () => {
         </div>
         {/* qr code end */}
         {/* bey start */}
-        <div className="mt-5 shadow-md bg-white rounded-md  p-5 flex justify-between dark:bg-darkPrimaryBg">
+        <div className="mt-5 shadow-md bg-white rounded-md  p-5 flex flex-col sm:flex-row gap-5 justify-between dark:bg-darkPrimaryBg">
           <div>
             <span className="text-[#525252] font-normal text-base ">
               Bae Code
@@ -456,12 +456,12 @@ const ProductDetailsForm = () => {
               alt="qr code"
               width={400}
               height={400}
-              className="w-[233px] h-[80px] mt-3"
+              className="w-[233px] h-[80px] max-w-[233px] max-h-[80px] mt-3"
             />
           </div>
           <div>
             <button className="bg-[#257CEB] text-sm font-normal text-white px-3 py-2 rounded-md shadow-md">
-              Download PNG
+              Download PNG ff
             </button>
           </div>
         </div>
@@ -630,7 +630,7 @@ const ProductDetailsForm = () => {
           </div>
         </div>
         {/* Specifications end */}
-        <div className="mt-6 flex justify-end items-center gap-3">
+        <div className="my-6  mx-3 flex justify-end items-center gap-3">
           {/* Cancel button */}
           <button
             type="button"

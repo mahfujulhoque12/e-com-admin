@@ -1,11 +1,11 @@
 "use client";
-
-import SubCategoryWrapper from "@/components/ui/sub-category/SubCategoryWrapper";
+import FileManagerWrapper from "@/components/ui/file-manager/FileManagerWrapper";
 import Topbar from "@/components/ui/topbar/Topbar";
 import { toggleMobileMenu } from "@/redux/feature/sidebar/sidebarSlice";
+import React from "react";
 import { useDispatch } from "react-redux";
 
-export default function Home() {
+const Page = () => {
   const dispatch = useDispatch();
   const handleHamburgerClick = () => {
     dispatch(toggleMobileMenu());
@@ -13,7 +13,9 @@ export default function Home() {
   return (
     <div>
       <Topbar handleHamburgerClick={handleHamburgerClick} />
-      <SubCategoryWrapper />
+      <FileManagerWrapper/>
     </div>
   );
-}
+};
+
+export default Page;

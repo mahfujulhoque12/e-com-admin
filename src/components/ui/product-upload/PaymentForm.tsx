@@ -65,7 +65,7 @@ const PaymentFormContent = () => {
   if (error) return <div>Error fetching Payment Details</div>;
 
   return (
-    <div className="p-5 rounded-md shadow-md bg-white ">
+    <div className="p-5 mt-5 rounded-md shadow-md bg-white ">
       <form onSubmit={handleSubmit(onSubmit, onError)}>
         {/* Payment Type Section */}
         <h1 className="text-[#333B4E] font-semibold text-xl ">Payment Type</h1>
@@ -134,7 +134,7 @@ const PaymentFormContent = () => {
           {/* Cancel Button */}
           <button
             type="button"
-            className="px-4 py-2 text-sm font-medium text-gray-700  border border-gray-300  rounded-md hover:bg-red-400  hover:text-white transition-all duration-300"
+            className="px-2 md:px-4 flex py-1 md:py-2 text-xs sm:text-sm font-medium text-gray-700  border border-gray-300  rounded-md hover:bg-red-400  hover:text-white transition-all duration-300"
             onClick={() => console.log("Form cancelled")}
           >
             Cancel
@@ -143,7 +143,7 @@ const PaymentFormContent = () => {
           {/* Save Button */}
           <button
             type="submit"
-            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 transition-all duration-300"
+            className="px-2 md:px-4 flex py-1 md:py-2 text-xs sm:text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 transition-all duration-300"
           >
             {paymentID ? "Update" : "Save"}
           </button>
@@ -152,7 +152,6 @@ const PaymentFormContent = () => {
     </div>
   );
 };
-
 
 const PaymentForm = () => (
   <Suspense fallback={<div>Loading...</div>}>

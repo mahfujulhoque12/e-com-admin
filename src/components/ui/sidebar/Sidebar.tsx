@@ -38,8 +38,12 @@ const items: SidebarItem[] = [
   { label: "Product", href: "/product-upload", icon: BookingIcon },
   { label: "Products", href: "/products", icon: SearchIcons },
   { label: "Category", href: "/category", icon: RefundIcon },
-  { label: "File Manager", href: "#", icon: MdOutlineInsertDriveFile },
-  { label: "Topup", href: "#", icon: TopupIcon },
+  {
+    label: "File Manager",
+    href: "/file-manager",
+    icon: MdOutlineInsertDriveFile,
+  },
+  { label: "Variation", href: "/variation", icon: TopupIcon },
   { label: "Customer", href: "#", icon: CustomerIcon },
   { label: "Reports", href: "#", icon: ReportIcon },
 
@@ -194,7 +198,7 @@ const Sidebar: React.FC<SidebarProps> = ({
         </div>
       </div>
       {showModal && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center">
+        <div className="fixed top-[10vh] max-h-[80vh] overflow-y-scroll inset-0 z-[100] flex items-center justify-center">
           <div
             className="fixed inset-0 bg-black/50"
             onClick={() => setShowModal(false)}
