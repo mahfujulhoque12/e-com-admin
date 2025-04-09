@@ -44,7 +44,7 @@ const items: SidebarItem[] = [
     icon: MdOutlineInsertDriveFile,
   },
   { label: "Variation", href: "/variation", icon: TopupIcon },
-  { label: "Customer", href: "#", icon: CustomerIcon },
+  { label: "Customer", href: "/customer", icon: CustomerIcon },
   { label: "Reports", href: "#", icon: ReportIcon },
 
   { label: "Employees", href: "#", icon: EmployeeIcon },
