@@ -12,7 +12,10 @@ export default function Home() {
   };
   return (
     <div>
-      <Topbar handleHamburgerClick={handleHamburgerClick} />
+      <div className="sticky top-0 left-0 z-50  ">
+        <Topbar handleHamburgerClick={handleHamburgerClick} />
+      </div>
+
       <SubCategoryWrapper />
     </div>
   );
