@@ -5,7 +5,7 @@ import { FaEllipsis } from "react-icons/fa6";
 const Pagination: React.FC = () => {
   const [currentPage, setCurrentPage] = useState(3);
   const totalPages = 10;
-  const pageRange = 3;
+  const pageRange = 1; // shorter range for mobile-friendliness
 
   const renderPageNumbers = () => {
     const pages = [];
@@ -21,7 +21,7 @@ const Pagination: React.FC = () => {
           <button
             key={i}
             onClick={() => setCurrentPage(i)}
-            className={`px-3 py-1 rounded-md mx-1 text-sm font-semibold ${
+            className={`px-2 sm:px-3 py-1 rounded-md text-xs sm:text-sm mx-0.5 sm:mx-1 font-semibold transition ${
               i === currentPage
                 ? "bg-[#1571E7] text-white dark:bg-darkMainBg"
                 : "bg-[#F9FBFC] text-gray-900 dark:bg-darkButtonBg hover:bg-gray-200"
@@ -35,9 +35,9 @@ const Pagination: React.FC = () => {
         pages.push(
           <span
             key={`ellipsis-${i}`}
-            className="px-2 py-1.5 text-sm font-semibold rounded-md bg-[#F5F7FA] dark:bg-[#F4F7FE4D] text-[#243045]"
+            className="px-2 py-1 text-xs sm:text-sm font-semibold rounded-md bg-[#F5F7FA] dark:bg-[#F4F7FE4D] text-[#243045]"
           >
-            <FaEllipsis className="w-4 h-4" />
+            <FaEllipsis className="w-3 h-3 sm:w-4 sm:h-4" />
           </span>
         );
         ellipsisAdded = true;
@@ -48,31 +48,29 @@ const Pagination: React.FC = () => {
   };
 
   const handlePrevious = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
+    if (currentPage > 1) setCurrentPage(currentPage - 1);
   };
 
   const handleNext = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
+    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
   };
 
   return (
-    <div className="flex justify-center items-center mt-4 space-x-2 mb-4 sm:mb-0">
+    <div className="flex justify-center items-center mt-4 space-x-1 sm:space-x-2 mb-4 sm:mb-0 overflow-x-auto px-2">
       <button
         onClick={handlePrevious}
         disabled={currentPage === 1}
-        className="px-2 py-1.5 text-sm font-semibold rounded-md bg-[#F9FBFC] text-[#243045] disabled:opacity-50 dark:bg-[#F4F7FE4D] shadow-md hover:bg-gray-200 disabled:hover:bg-[#F9FBFC]"
+        className="px-2 py-1 text-xs sm:text-sm font-semibold rounded-md bg-[#F9FBFC] text-[#243045] disabled:opacity-50 dark:bg-[#F4F7FE4D] shadow-md hover:bg-gray-200 disabled:hover:bg-[#F9FBFC]"
       >
         <BiChevronLeft className="w-4 h-4" />
       </button>
+
       {renderPageNumbers()}
+
       <button
         onClick={handleNext}
         disabled={currentPage === totalPages}
-        className="px-2 py-1.5 text-sm font-semibold rounded-md bg-[#F5F7FA] text-[#243045] disabled:opacity-50 shadow-md hover:bg-gray-200 disabled:hover:bg-[#F5F7FA]"
+        className="px-2 py-1 text-xs sm:text-sm font-semibold rounded-md bg-[#F5F7FA] text-[#243045] disabled:opacity-50 shadow-md hover:bg-gray-200 disabled:hover:bg-[#F5F7FA]"
       >
         <BiChevronRight className="w-4 h-4" />
       </button>

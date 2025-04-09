@@ -110,7 +110,7 @@ const NewCategory = () => {
           {/* Cancel button */}
           <button
             type="reset"
-            className="px-4 py-2 text-sm font-medium text-gray-700  border border-gray-300  rounded-md  hover:bg-red-400 hover:text-white transition-all duration-300"
+            className="px-2 md:px-4 flex py-1 md:py-2 text-xs sm:text-sm font-medium text-gray-700  border border-gray-300  rounded-md  hover:bg-red-400 hover:text-white transition-all duration-300"
           >
             Cancel
           </button>
@@ -118,7 +118,7 @@ const NewCategory = () => {
           {/* Save button */}
           <button
             type="submit"
-            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 transition-all duration-300"
+            className="px-2 md:px-4 flex py-1 md:py-2 text-xs sm:text-sm font-medium text-white bg-blue-600 border border-transparent rounded-md hover:bg-blue-700 transition-all duration-300"
           >
             Save
           </button>

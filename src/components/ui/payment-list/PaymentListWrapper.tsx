@@ -21,8 +21,7 @@ import {
 import { ShippinEnum } from "@/types/VariationInput";
 
 import { paymentListData } from "@/data/PaymentListData";
-
-const initialFilters = ["Category", "Flight Schedule", "Airlines"];
+import { initialFilters } from "../products/ProductsListWrapper";
 
 const PaymentListWrapper = () => {
   const [activeFilters, setActiveFilters] = useState(initialFilters);
@@ -71,12 +70,12 @@ const PaymentListWrapper = () => {
   }, [isCalendarOpen]);
 
   return (
-    <div className="bg-white p-5 rounded-md">
+    <div className="bg-white p-5 rounded-md mt-5">
       <SearchAndFilter />
 
       <div className="mt-5 bg-white shadow-md p-5">
         {/* filters section start */}
-        <div className="flex items-center gap-2">
+        <div className="flex items-center gap-2 w-full overflow-x-auto">
           {activeFilters.map((filter) => (
             <button
               key={filter}
@@ -93,7 +92,7 @@ const PaymentListWrapper = () => {
         {/* filters section end */}
         {/* options start  */}
         <form onSubmit={handleSubmit(onSubmit)}>
-          <div className=" flex items-center gap-5 mt-5 ">
+          <div className=" grid gird-cols-1 sm:grid-cols-2 md:grid-cols-3  xl:grid-cols-4 2xl:grid-cols-5 items-center gap-5 mt-5 ">
             <div className="border px-5 py-3 rounded-md bg-white border-[#E6EBEE] w-full relative">
               {/* Toggle button/message */}
               <div
@@ -324,8 +323,8 @@ const PaymentListWrapper = () => {
           </table>
         </div>
 
-        <div className="mt-5 flex items-center justify-between">
-          <p className="text-base font-semibold text-[#455468]">
+        <div className="mt-5 flex items-center justify-between flex-col md:flex-row">
+          <p className="text-sm sm:text-base font-semibold text-[#455468]">
             Displaying product entries up to 100{" "}
           </p>
 
