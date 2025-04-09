@@ -35,8 +35,8 @@ type SidebarItem = {
 
 const items: SidebarItem[] = [
   { label: "Sub-category", href: "/sub-category", icon: DashboardIcon },
-  { label: "Product", href: "/product-upload", icon: BookingIcon },
-  { label: "Products", href: "/products", icon: SearchIcons },
+  { label: "Product", href: "/product-upload-main", icon: BookingIcon },
+  { label: "Products", href: "/products-main", icon: SearchIcons },
   { label: "Category", href: "/category", icon: RefundIcon },
   {
     label: "File Manager",
