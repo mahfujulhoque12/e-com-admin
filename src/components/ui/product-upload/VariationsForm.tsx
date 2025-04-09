@@ -53,7 +53,7 @@ export default function VariationsForm() {
   };
 
   return (
-    <div className="bg-white p-5 shadow-md rounded-md mt-5">
+    <div className="bg-white p-5 shadow-md rounded-md mt-5 md:mt-0">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
         <h1 className="text-[#333B4E] text-xl font-semibold ">Variations</h1>
 

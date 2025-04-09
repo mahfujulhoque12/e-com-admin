@@ -68,7 +68,7 @@ const BannerListWrapper = () => {
   }, [isCalendarOpen]);
 
   return (
-    <div className="bg-white p-5 rounded-md mt-5">
+    <div className="bg-white p-5 rounded-md mt-5 md:mt-0">
       <SearchAndFilter />
 
       <div className="mt-5 bg-white shadow-md p-5">
