@@ -9,24 +9,24 @@ const tabs = [
   {
     label: "Product Details",
 
-    href: "/product-upload",
+    href: "/product-upload-main",
   },
 
   {
     label: "Variations",
 
-    href: "/product-upload/variations",
+    href: "/product-upload-main/variations",
   },
   {
     label: "Media",
 
-    href: "/product-upload/media",
+    href: "/product-upload-main/media",
   },
-  { label: "Payment Type", href: "/product-upload/payment-type" },
+  { label: "Payment Type", href: "/product-upload-main/payment-type" },
   {
     label: "Policies",
 
-    href: "/product-upload/policies",
+    href: "/product-upload-main/policies",
   },
 ];
 export default function ProductLayout({
