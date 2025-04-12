@@ -6,7 +6,7 @@ import "./globals.css";
 import { Provider } from "react-redux";
 import { store } from "@/redux/redux-store/store";
 import Layout from "@/components/ui/global/Layout";
-
+import ThemeProvider from "@/components/theme-provider/ThemeProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,13 +24,20 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable}  antialiased bg-[#eff3f8] overflow-x-hidden p-5 `}
+        className={`${geistSans.variable} ${geistMono.variable}  antialiased bg-background  overflow-x-hidden p-5 `}
       >
-        <Provider store={store}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Provider store={store}>
             <Layout>{children}</Layout>
-        </Provider>
+          </Provider>
+        </ThemeProvider>
       </body>
     </html>
   );

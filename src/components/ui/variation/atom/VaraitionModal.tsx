@@ -19,13 +19,11 @@ const VaraitionModal: React.FC<ModalProps> = ({ onClose }) => {
     console.log(data, "modal data");
   };
   return (
-    <div className="bg-white p-6 rounded-xl shadow-lg w-full mx-5 max-w-[400px] relative">
+    <div className="bg-background p-6 rounded-xl shadow-lg w-full mx-5 max-w-[400px] relative">
       <div className="flex items-center justify-between">
         <div>
-          <h2 className="text-base font-semibold text-[#333B4E]">
-            New Attributes
-          </h2>
-          <p className="text-[#666666] font-normal text-xs mb-3">
+          <h2 className="text-base font-semibold text-color">New Attributes</h2>
+          <p className="text-[#666666] dark:text-gray-300 font-normal text-xs mb-3">
             Duplicate attributes not allowed
           </p>
         </div>
@@ -36,7 +34,7 @@ const VaraitionModal: React.FC<ModalProps> = ({ onClose }) => {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <div>
-          <label className="text-xs font-medium text-[#333B4E]">
+          <label className="text-xs font-medium text-color">
             Attribute Name
           </label>
           <input

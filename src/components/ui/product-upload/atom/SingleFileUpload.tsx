@@ -85,14 +85,16 @@ const SingleFileUpload: React.FC<SingleFileUploadProps> = ({
   return (
     <div
       className={cn(
-        "mt-8 shadow-md rounded-md p-2 md:p-6 w-full relative box-border",
+        "mt-8 shadow-md rounded-md p-2 md:p-6 w-full relative box-border dark:bg-[#1e293b]",
         className
       )}
     >
       <h1 className="font-semibold capitalize text-base  text-[#12B76A]">
         {cardTitle}
       </h1>
-      <p className="text-[#666666] text-xs font-normal mt-1">{cardDes}</p>
+      <p className="text-[#666666] dark:text-gray-200 text-xs font-normal mt-1">
+        {cardDes}
+      </p>
       <div
         className={`flex border-dashed border-2 border-[#12B76A] mt-4 rounded-md ${
           isDragOver ? "border-[#12B76A]  bg-blue-100" : "border-[#12B76A] "
@@ -142,7 +144,7 @@ const SingleFileUpload: React.FC<SingleFileUploadProps> = ({
               />
             </div>
 
-            <span className="text-[#243045] py-1 text-xs lg:text-sm font-normal ">
+            <span className="text-color py-1 text-xs lg:text-sm font-normal ">
               Drag your files to start uploading
             </span>
             <div className="flex items-center gap-3">
@@ -162,7 +164,7 @@ const SingleFileUpload: React.FC<SingleFileUploadProps> = ({
           </div>
         )}
       </div>
-      <p className="text-[#656565] font-normal text-sm mt-2 lg:text-base sm:mt-1 ">
+      <p className="text-[#656565] dark:text-gray-300 font-normal text-sm mt-2 lg:text-base sm:mt-1 ">
         <span className="text-[#FF2147]"> Note:</span> Upload only JPG, PNG &
         WEBP File Here. File Size Max {maxFileSize} MB
       </p>

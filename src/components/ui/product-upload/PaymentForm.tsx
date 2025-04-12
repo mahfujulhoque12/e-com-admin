@@ -65,10 +65,10 @@ const PaymentFormContent = () => {
   if (error) return <div>Error fetching Payment Details</div>;
 
   return (
-    <div className="p-5 mt-5 rounded-md shadow-md bg-white md:mt-0 ">
+    <div className="p-5 mt-5 rounded-md shadow-md bg-primary md:mt-0 ">
       <form onSubmit={handleSubmit(onSubmit, onError)}>
         {/* Payment Type Section */}
-        <h1 className="text-[#333B4E] font-semibold text-xl ">Payment Type</h1>
+        <h1 className="text-color font-semibold text-xl ">Payment Type</h1>
 
         <PaymentToggle
           imageSrc={cod}
@@ -100,7 +100,7 @@ const PaymentFormContent = () => {
 
         {/* GST Section */}
         <div className="mt-7 flex items-center gap-4">
-          <h1 className="text-[#333B4E] font-semibold text-xl ">GST</h1>
+          <h1 className="text-color font-semibold text-xl ">GST</h1>
           <ResuableSwitch
             isChecked={paymentData.GST.enabled}
             onChange={() => dispatch(toggleGST())}
@@ -134,7 +134,7 @@ const PaymentFormContent = () => {
           {/* Cancel Button */}
           <button
             type="button"
-            className="px-2 md:px-4 flex py-1 md:py-2 text-xs sm:text-sm font-medium text-gray-700  border border-gray-300  rounded-md hover:bg-red-400  hover:text-white transition-all duration-300"
+            className="px-2 md:px-4 flex py-1 md:py-2 text-xs sm:text-sm font-medium text-color  border border-gray-300  rounded-md hover:bg-red-400  hover:text-white transition-all duration-300"
             onClick={() => console.log("Form cancelled")}
           >
             Cancel

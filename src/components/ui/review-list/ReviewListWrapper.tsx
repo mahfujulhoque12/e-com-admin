@@ -28,6 +28,27 @@ const ReviewListWrapper = () => {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<null | number>(null);
   const calendarRef = useRef<HTMLDivElement>(null);
+  const [selectedIds, setSelectedIds] = useState<number[]>([]);
+
+  // checkbox selection
+  const isAllSelected =
+    reviewListData.length > 0 && selectedIds.length === reviewListData.length;
+
+  const handleAllSelect = () => {
+    if (isAllSelected) {
+      setSelectedIds([]);
+    } else {
+      setSelectedIds(reviewListData.map((data) => data.id));
+    }
+  };
+
+  const handleRowSelect = (id: number) => {
+    setSelectedIds((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+    );
+  };
+  // checkbox selection
+
   const toggleDropdown = (id: number) => {
     setOpenDropdown(openDropdown === id ? null : id);
   };
@@ -69,16 +90,16 @@ const ReviewListWrapper = () => {
   }, [isCalendarOpen]);
 
   return (
-    <div className="bg-white p-5 rounded-md mt-5 md:mt-0">
+    <div className="bg-primary p-5 rounded-md mt-5 md:mt-0">
       <SearchAndFilter />
 
-      <div className="mt-5 bg-white shadow-md p-5">
+      <div className="mt-5 bg-primary shadow-md p-5">
         {/* filters section start */}
         <div className="flex items-center gap-2 w-full overflow-x-auto">
           {activeFilters.map((filter) => (
             <button
               key={filter}
-              className="text-[#333B4E] flex items-center gap-2 bg-[#F9FBFC] border border-[#E6EBEE] text-sm font-medium cursor-pointer px-3 py-2 rounded-md"
+              className="text-color flex items-center gap-2 bg-[#F9FBFC] dark:bg-gray-800 border border-[#E6EBEE] dark:border-gray-700 text-sm font-medium cursor-pointer px-3 py-2 rounded-md"
             >
               {filter}
               <IoMdClose
@@ -92,7 +113,7 @@ const ReviewListWrapper = () => {
         {/* options start  */}
         <form onSubmit={handleSubmit(onSubmit)}>
           <div className="  grid gird-cols-1 sm:grid-cols-2 md:grid-cols-3  xl:grid-cols-4 2xl:grid-cols-5 items-center gap-5 mt-5 ">
-            <div className="border px-5 py-3 rounded-md bg-white border-[#E6EBEE] w-full relative">
+            <div className="border px-5 py-3 rounded-md bg-primary border-[#E6EBEE] dark:border-gray-700  w-full relative">
               {/* Toggle button/message */}
               <div
                 onClick={() => setIsCalendarOpen(true)}
@@ -107,7 +128,7 @@ const ReviewListWrapper = () => {
               {isCalendarOpen && (
                 <div
                   ref={calendarRef}
-                  className="absolute top-14 left-0 bg-white p-3 shadow-md rounded-md z-10"
+                  className="absolute top-14 left-0 bg-primary p-3 shadow-md rounded-md z-10"
                 >
                   <DayPicker
                     animate
@@ -203,50 +224,64 @@ const ReviewListWrapper = () => {
         </form>
 
         {/* options end  */}
-        <div className="w-full overflow-x-auto  rounded-md mt-5">
-          <table className="min-w-full">
-            <thead className="bg-[#F9FAFB] ">
+        <div className="w-full overflow-x-auto  rounded-md mt-5 bg-background">
+          <table className="min-w-full bg-background">
+            <thead className="bg-background ">
               <tr>
-                <th className="px-6 py-5 text-left text-base font-semibold text-[#455468]  tracking-wider">
-                  <input type="checkbox" className="rounded" />
+                <th className="px-6 py-5 text-left text-base font-semibold text-[#455468] dark:text-gray-300  tracking-wider">
+                  <input
+                    type="checkbox"
+                    className="rounded"
+                    checked={isAllSelected}
+                    onChange={handleAllSelect}
+                  />
                 </th>
-                <th className="px-6 py-5 text-left text-base font-semibold text-[#455468]  tracking-wider">
+                <th className="px-6 py-5 text-left text-base font-semibold text-[#455468] dark:text-gray-300  tracking-wider">
                   Review{"\u00A0"}Id
                 </th>
-                <th className="px-6 py-5 text-left text-base font-semibold text-[#455468]  tracking-wider">
+                <th className="px-6 py-5 text-left text-base font-semibold text-[#455468] dark:text-gray-300  tracking-wider">
                   Product
                 </th>
-                <th className="px-6 py-5 text-left text-base font-semibold text-[#455468]  tracking-wider">
+                <th className="px-6 py-5 text-left text-base font-semibold text-[#455468] dark:text-gray-300  tracking-wider">
                   Rating
                 </th>
-                <th className="px-6 py-5 text-left text-base font-semibold text-[#455468]  tracking-wider">
+                <th className="px-6 py-5 text-left text-base font-semibold text-[#455468] dark:text-gray-300  tracking-wider">
                   Review
                 </th>
-                <th className="px-6 py-5 text-left text-base font-semibold text-[#455468]  tracking-wider">
+                <th className="px-6 py-5 text-left text-base font-semibold text-[#455468] dark:text-gray-300  tracking-wider">
                   Date
                 </th>
 
-                <th className="px-6 py-5 text-left text-base font-semibold text-[#455468]  tracking-wider">
+                <th className="px-6 py-5 text-left text-base font-semibold text-[#455468] dark:text-gray-300  tracking-wider">
                   Payment Status
                 </th>
-                <th className="px-6 py-5 text-left text-base font-semibold text-[#455468]  tracking-wider">
+                <th className="px-6 py-5 text-left text-base font-semibold text-[#455468] dark:text-gray-300  tracking-wider">
                   Action
                 </th>
               </tr>
             </thead>
-            <tbody className="bg-white">
+            <tbody className="bg-background">
               {reviewListData.map((product) => (
                 <tr
                   key={product.id}
-                  className={product.id % 2 === 0 ? "bg-[#F9FAFB]" : "bg-white"}
+                  className={
+                    product.id % 2 === 0
+                      ? "bg-[#F9FAFB] dark:bg-[#111827]"
+                      : "bg-white dark:bg-[#1e293b]"
+                  }
                 >
                   <td className="px-6 py-4 whitespace-nowrap">
-                    <input type="checkbox" className="rounded" />
+                    <input
+                      type="checkbox"
+                      className="rounded"
+                      checked={selectedIds.includes(product.id)}
+                      onChange={() => handleRowSelect(product.id)}
+                    />
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap font-medium text-sm text-[#455468]">
+                  <td className="px-6 py-4 whitespace-nowrap font-medium text-sm text-[#455468] dark:text-gray-300">
                     {product.paymentId}
                   </td>
-                  <td className="px-6 py-4  whitespace-nowrap font-medium text-sm text-[#455468]">
+                  <td className="px-6 py-4  whitespace-nowrap font-medium text-sm text-[#455468] dark:text-gray-300">
                     {product.product}
                   </td>
 
@@ -264,10 +299,10 @@ const ReviewListWrapper = () => {
                       ))}
                     </div>
                   </td>
-                  <td className="px-6   py-4 whitespace-nowrap font-medium text-sm text-[#455468]">
+                  <td className="px-6   py-4 whitespace-nowrap font-medium text-sm text-[#455468] dark:text-gray-300">
                     {product.review}
                   </td>
-                  <td className="px-6 py-4 whitespace-nowrap font-medium text-sm text-[#455468]">
+                  <td className="px-6 py-4 whitespace-nowrap font-medium text-sm text-[#455468] dark:text-gray-300">
                     {product.date}
                   </td>
 
@@ -292,9 +327,9 @@ const ReviewListWrapper = () => {
                   <td className="px-6 py-4  relative whitespace-nowrap text-sm font-medium ">
                     <button
                       onClick={() => toggleDropdown(product.id)}
-                      className="cursor-pointer"
+                      className="cursor-pointer text-[#1C274C] dark:text-gray-300"
                     >
-                      <HiDotsVertical color="#1C274C" size={20} />
+                      <HiDotsVertical size={20} />
                     </button>
                     {openDropdown === product.id && (
                       <div className="absolute left-12 top-6 bg-white shadow-md px-4 py-2 rounded-md  transition-all duration-300 ease-in-out">
@@ -314,7 +349,7 @@ const ReviewListWrapper = () => {
         </div>
 
         <div className="mt-5 flex items-center justify-between flex-col md:flex-row">
-          <p className="text-sm sm:text-base font-semibold text-[#455468]">
+          <p className="text-sm sm:text-base font-semibold text-[#455468] dark:text-gray-300">
             Displaying product entries up to 100{" "}
           </p>
 

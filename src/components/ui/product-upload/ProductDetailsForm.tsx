@@ -114,8 +114,8 @@ const ProductDetailsForm = () => {
   return (
     <div>
       <form onSubmit={handleSubmit(onSubmit, onError)}>
-        <div className="shadow-md mt-5 lg:mt-0 p-5 bg-white rounded-md  ">
-          <h1 className="text-[#333B4E] text-xl font-semibold ">
+        <div className="shadow-md mt-5 lg:mt-0 p-5 bg-primary rounded-md  ">
+          <h1 className="text-color text-xl font-semibold ">
             Product Information
           </h1>
           {/* frist col start */}
@@ -242,8 +242,8 @@ const ProductDetailsForm = () => {
           {/* text area end */}
         </div>
         {/* price start */}
-        <div className="shadow-md bg-white rounded-md   mt-6 p-5 ">
-          <h1 className="text-[#333B4E] text-xl font-semibold ">Price</h1>
+        <div className="shadow-md bg-primary rounded-md   mt-6 p-5 ">
+          <h1 className="text-color text-xl font-semibold ">Price</h1>
           <div className="flex flex-col md:flex-row gap-3 mt-5">
             <div className="w-full">
               <ResuableInput
@@ -277,9 +277,9 @@ const ProductDetailsForm = () => {
         </div>
         {/* price end */}
         {/* Dimension start */}
-        <div className="shadow-md rounded-md bg-white  mt-6 p-5 dark:bg-darkbuttonBg">
+        <div className="shadow-md rounded-md bg-primary  mt-6 p-5 dark:bg-darkbuttonBg">
           <div className="flex items-center gap-4">
-            <h1 className="text-[#333B4E] text-xl font-semibold ">Dimension</h1>
+            <h1 className="text-color text-xl font-semibold ">Dimension</h1>
             <Switch
               isChecked={isChecked}
               onChange={() => setIsChecked(!isChecked)}
@@ -355,8 +355,8 @@ const ProductDetailsForm = () => {
         </div>
         {/* Dimension end */}
         {/* stock start */}
-        <div className="shadow-md rounded-md bg-white  mt-6 p-5 dark:bg-darkbuttonBg">
-          <h1 className="text-[#333B4E] text-xl font-semibold ">Stock</h1>
+        <div className="shadow-md rounded-md bg-primary  mt-6 p-5 dark:bg-darkbuttonBg">
+          <h1 className="text-color text-xl font-semibold ">Stock</h1>
           <div className="flex flex-col md:flex-row gap-3 mt-5">
             <div className="w-full">
               <ResuableInput
@@ -391,8 +391,8 @@ const ProductDetailsForm = () => {
         </div>
         {/* stock end */}
         {/* Identifier start */}
-        <div className="shadow-md rounded-md bg-white  mt-6 p-5 dark:bg-darkbuttonBg">
-          <h1 className="text-[#333B4E] text-xl font-semibold ">Identifier</h1>
+        <div className="shadow-md rounded-md bg-primary  mt-6 p-5 dark:bg-darkbuttonBg">
+          <h1 className="text-color text-xl font-semibold ">Identifier</h1>
           <div className="flex flex-col md:flex-row gap-3 mt-5">
             <div className="w-full">
               <ResuableInput
@@ -424,9 +424,9 @@ const ProductDetailsForm = () => {
             </div>
           </div>
           {/* qr code start */}
-          <div className="mt-5 shadow-md bg-white rounded-md  p-5 flex justify-between dark:bg-darkPrimaryBg">
+          <div className="mt-5 shadow-md bg-primary rounded-md  p-5 flex justify-between dark:bg-darkPrimaryBg">
             <div>
-              <span className="text-[#525252] font-normal text-base ">
+              <span className="text-[#525252] dark:text-gray-300 font-normal text-base ">
                 QR Code
               </span>
               <Image
@@ -446,9 +446,9 @@ const ProductDetailsForm = () => {
         </div>
         {/* qr code end */}
         {/* bey start */}
-        <div className="mt-5 shadow-md bg-white rounded-md  p-5 flex flex-col sm:flex-row gap-5 justify-between dark:bg-darkPrimaryBg">
+        <div className="mt-5 shadow-md bg-primary rounded-md  p-5 flex flex-col sm:flex-row gap-5 justify-between dark:bg-darkPrimaryBg">
           <div>
-            <span className="text-[#525252] font-normal text-base ">
+            <span className="text-[#525252] dark:text-gray-300 font-normal text-base ">
               Bae Code
             </span>
             <Image
@@ -468,8 +468,8 @@ const ProductDetailsForm = () => {
         {/* bey end */}
         {/* Identifier end */}
         {/* Warrenty start */}
-        <div className="shadow-md bg-white rounded-md   mt-6 p-5 dark:bg-darkbuttonBg">
-          <h1 className="text-[#333B4E] text-xl font-semibold ">Warrenty</h1>
+        <div className="shadow-md bg-primary rounded-md   mt-6 p-5 dark:bg-darkbuttonBg">
+          <h1 className="text-color text-xl font-semibold ">Warrenty</h1>
           <div className="flex items-center gap-5 my-5">
             <div className="flex items-center gap-2">
               <input
@@ -480,7 +480,7 @@ const ProductDetailsForm = () => {
               />
               <label
                 htmlFor="yes-radio"
-                className="text-base font-normal text-[#7C7C7C] "
+                className="text-base font-normal text-[#7C7C7C] dark:text-gray-300 "
               >
                 Yes
               </label>
@@ -494,7 +494,7 @@ const ProductDetailsForm = () => {
               />
               <label
                 htmlFor="no-radio"
-                className="text-base font-normal text-[#7C7C7C] "
+                className="text-base font-normal text-[#7C7C7C] dark:text-gray-300 "
               >
                 No
               </label>
@@ -534,7 +534,7 @@ const ProductDetailsForm = () => {
           </div>
           {/* --------------change of mind------------------ */}
           <div className="mt-6">
-            <span className="text-[#7C7C7C] font-normal text-base ">
+            <span className="text-[#7C7C7C] dark:text-gray-300 font-normal text-base ">
               Change of mind
             </span>
             <div className="flex items-center gap-5 mt-2">
@@ -547,7 +547,7 @@ const ProductDetailsForm = () => {
                 />
                 <label
                   htmlFor="yes-mind"
-                  className="text-base font-normal text-[#7C7C7C] "
+                  className="text-base font-normal text-[#7C7C7C] dark:text-gray-300 "
                 >
                   Yes
                 </label>
@@ -561,7 +561,7 @@ const ProductDetailsForm = () => {
                 />
                 <label
                   htmlFor="no-mind"
-                  className="text-base font-normal text-[#7C7C7C] "
+                  className="text-base font-normal text-[#7C7C7C] dark:text-gray-300 "
                 >
                   No
                 </label>
@@ -571,10 +571,8 @@ const ProductDetailsForm = () => {
         </div>
         {/* Warrenty end */}
         {/* Specifications start */}
-        <div className="shadow-md rounded-md bg-white  mt-6  p-5 dark:bg-darkbuttonBg">
-          <h1 className="text-[#333B4E] text-xl font-semibold ">
-            Specifications
-          </h1>
+        <div className="shadow-md rounded-md bg-primary  mt-6  p-5 dark:bg-darkbuttonBg">
+          <h1 className="text-color text-xl font-semibold ">Specifications</h1>
           {formData.specifications.map((spec, index) => (
             <div key={index} className="flex flex-col md:flex-row gap-3 mt-5">
               <div className="w-full">
@@ -634,7 +632,7 @@ const ProductDetailsForm = () => {
           {/* Cancel button */}
           <button
             type="button"
-            className="px-4 py-2 text-sm font-medium text-gray-700  border border-gray-300  rounded-md  hover:bg-red-400 hover:text-white transition-all duration-300"
+            className="px-4 py-2 text-sm font-medium text-color  border border-gray-300  rounded-md  hover:bg-red-400 hover:text-white transition-all duration-300"
             onClick={() => {
               dispatch(resetForm());
             }}

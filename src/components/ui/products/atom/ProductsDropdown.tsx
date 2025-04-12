@@ -56,11 +56,11 @@ const ProductsDropdown = <T extends string>({
   return (
     <div ref={dropdownRef}>
       <div className="w-full  flex flex-col  ">
-        <div className="w-full relative   focus-within:border-blue-500  focus-within:ring-blue-500 border border-[#E6EBEE] px-5 py-3 rounded-md">
+        <div className="w-full relative   focus-within:border-blue-500  focus-within:ring-blue-500 border border-[#E6EBEE] dark:border-gray-700 px-5 py-3 rounded-md">
           <div
             key={name}
             className={`w-full focus-within:border-blue-500 focus-within:ring-blue-500  flex items-center bg-transparent outline-none cursor-pointer transition-all duration-300 ease-in-out justify-between ${
-              selectedOption ? "text-black" : "text-gray-500"
+              selectedOption ? "text-black" : "text-gray-500 dark:text-gray-200"
             }`}
             onClick={() => setIsOpen(!isOpen)}
           >
@@ -74,7 +74,7 @@ const ProductsDropdown = <T extends string>({
 
           {/* Keep the ul always in the DOM but animate it */}
           <ul
-            className={`absolute z-10 w-full bg-[#F9FBFC] border border-[#E6EBEE] rounded-lg shadow-md mt-6 left-0 transition-all duration-300 ease-in-out transform ${
+            className={`absolute z-10 w-full bg-primary border border-[#E6EBEE] dark:border-gray-700 rounded-lg shadow-md mt-6 left-0 transition-all duration-300 ease-in-out transform ${
               isOpen
                 ? "opacity-100 scale-100 visible"
                 : "opacity-0 scale-95 invisible"
@@ -83,7 +83,7 @@ const ProductsDropdown = <T extends string>({
             {options.map((option) => (
               <li
                 key={option}
-                className="px-4 py-2 cursor-pointer hover:bg-gray-100 transition-all duration-300 ease-in-out"
+                className="px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-300 ease-in-out"
                 onClick={() => handleSelect(option)}
               >
                 {option}

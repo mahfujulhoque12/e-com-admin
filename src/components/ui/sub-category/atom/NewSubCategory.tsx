@@ -61,8 +61,8 @@ const NewSubCategory = () => {
   };
 
   return (
-    <div className="mt-5 bg-white rounded-md shadow-md p-5">
-      <h1 className="text-xl font-semibold text-[#0A0E1F]">New Category</h1>
+    <div className="mt-5 bg-primary rounded-md shadow-md p-5">
+      <h1 className="text-xl font-semibold text-color">New Category</h1>
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className="flex items-center flex-col md:flex-row gap-3 mt-5">
           {/* First Name Field */}
@@ -111,10 +111,10 @@ const NewSubCategory = () => {
           />
         </div>
         {/* Image Field */}
-        <h3 className="text-base font-semibold text-[#0A0E1F] mt-3">
+        <h3 className="text-base font-semibold text-color mt-3">
           Upload Image
         </h3>
-        <div className="w-full md:w-1/2 mt-0  dark:bg-darkButtonBg rounded-md bg-[#F9FBFC] ">
+        <div className="w-full md:w-1/2   dark:bg-darkButtonBg rounded-md bg-praimary shadow-md border mt-5 dark:border-gray-700 border-gray-300">
           <MultipleFileUpload
             attachments={mediaFormData.multipuleFile.map(
               (fileMeta) => new File([], fileMeta.name, { type: fileMeta.type })
@@ -133,7 +133,7 @@ const NewSubCategory = () => {
           {/* Cancel button */}
           <button
             type="reset"
-            className="px-4 py-2 text-sm font-medium text-gray-700  border border-gray-300  rounded-md  hover:bg-red-400 hover:text-white transition-all duration-300"
+            className="px-4 py-2 text-sm font-medium text-color  border border-gray-300  rounded-md  hover:bg-red-400 hover:text-white transition-all duration-300"
           >
             Cancel
           </button>
