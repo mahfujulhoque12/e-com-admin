@@ -25,16 +25,13 @@ const ResuableInput: React.FC<InputFieldProps> = ({
   return (
     <div className="flex flex-col w-full">
       <div className="  ">
-        <label
-          htmlFor={name}
-          className=" text-base font-medium text-[#333B4E] "
-        >
+        <label htmlFor={name} className=" text-base font-medium text-color ">
           {label}
         </label>
         <input
           id={name}
           type={type}
-          className="w-full bg-[#F9FBFC]  focus-within:border-blue-500  focus-within:ring-blue-500 border border-[#E6EBEE] px-3.5 py-4 rounded-md mt-2"
+          className="w-full input-bg  focus-within:border-blue-500  focus-within:ring-blue-500 border border-[#E6EBEE] dark:border-gray-700 px-3.5 py-4 rounded-md mt-2"
           placeholder={placeholder}
           {...register(name, validation)}
           value={value}

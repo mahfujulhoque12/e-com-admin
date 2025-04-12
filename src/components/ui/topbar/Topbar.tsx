@@ -2,7 +2,7 @@ import Image from "next/image";
 import React, { useEffect, useRef, useState } from "react";
 
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
-import { FaAngleDown, FaCloudMoon } from "react-icons/fa";
+import { FaAngleDown } from "react-icons/fa";
 import flag from "/public/topbar/flag.svg";
 import admin from "/public/topbar/admin.png";
 
@@ -10,6 +10,7 @@ import { BiMenu } from "react-icons/bi";
 import { RiDashboardLine } from "react-icons/ri";
 import { PiBellZBold } from "react-icons/pi";
 import Profile from "./atom/Profile";
+import ThemeToggle from "@/components/theme-provider/ThemeToggle";
 
 const useDropdown = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -57,7 +58,7 @@ const Topbar: React.FC<TopBarProps> = ({
 
   return (
     <div
-      className={`flex items-center justify-between bg-white p-3 flex-shrink-0 dark:bg-darkPrimaryBg ${
+      className={`flex items-center justify-between  p-3 flex-shrink-0 bg-primary ${
         isTopbarStyle ? " " : "shadow-sm rounded-md"
       }`}
     >
@@ -70,7 +71,7 @@ const Topbar: React.FC<TopBarProps> = ({
         >
           <BiMenu className="w-6 h-6 text-gray-700 " />
         </button>
-        <button className=" flex gap-2.5 items-center text-lg sm:text-xl md:text-2xl lg:text-3xl text-[#333B4E] font-semibold m-0 md:mt-0">
+        <button className=" flex gap-2.5 items-center text-lg sm:text-xl md:text-2xl lg:text-3xl  text-color font-semibold m-0 md:mt-0">
           <RiDashboardLine />
           Bread cumb
         </button>
@@ -108,7 +109,7 @@ const Topbar: React.FC<TopBarProps> = ({
             onClick={() => setIsMobileMenuOpen(false)}
           >
             <div className="flex items-center gap-2">
-              <button className="bg-[#F4F7FE4D] relative text-[#0A0E1F] shadow-sm p-2 rounded-full dark:bg-darkbuttonBg ">
+              <button className="bg-btn relative text-color-btn shadow-sm p-2 rounded-full ">
                 <PiBellZBold size={18} />
                 <span className="bg-[#f23e43] text-white p-[2px] text-[6px] rounded-full absolute top-0 right-0">
                   99+
@@ -117,10 +118,7 @@ const Topbar: React.FC<TopBarProps> = ({
               <span className="text-xs md:hidden">Notification</span>
             </div>
             <div className="flex items-center gap-2">
-              <button className="bg-[#F4F7FE4D] relative text-[#0A0E1F] shadow-sm p-2 rounded-full dark:bg-darkbuttonBg ">
-                <FaCloudMoon size={18} />
-              </button>
-              <span className="text-xs md:hidden">Theme</span>
+              <ThemeToggle />
             </div>
           </div>
 
@@ -141,7 +139,7 @@ const Topbar: React.FC<TopBarProps> = ({
               onClick={languageDropdown.toggle}
             />
             <button
-              className="mr-0 sm:mr-2  text-[#8391A1] bg-white rounded p-1 text-sm relative cursor-pointer dark:bg-darkbuttonBg "
+              className="mr-0 sm:mr-2  text-[#8391A1] bg-background text-color rounded p-1 text-sm relative cursor-pointer dark:bg-darkbuttonBg "
               onClick={languageDropdown.toggle}
               aria-haspopup="true"
               aria-expanded={languageDropdown.isOpen}
@@ -152,7 +150,7 @@ const Topbar: React.FC<TopBarProps> = ({
               </span>
             </button>
             {languageDropdown.isOpen && (
-              <ul className="absolute animate-slide-down z-[60] bg-white shadow-md rounded w-24 top-10 border border-gray-300">
+              <ul className="absolute animate-slide-down z-[60] bg-primary shadow-md rounded w-24 top-10 border border-gray-300">
                 {["English", "Bangla", "Arabic"].map((language) => (
                   <li
                     key={language}
@@ -189,7 +187,7 @@ const Topbar: React.FC<TopBarProps> = ({
             aria-expanded={adminDropdown.isOpen}
           ></button>
           {adminDropdown.isOpen && (
-            <ul className="absolute animate-slide-down bg-white shadow-md rounded right-72 w-full top-12  z-60">
+            <ul className="absolute animate-slide-down bg-primary shadow-md rounded right-72 w-full top-12  z-60">
               <li>
                 <Profile />
               </li>

@@ -89,9 +89,9 @@ const MediaForm = () => {
   };
 
   return (
-    <div className="p-5 bg-white rounded-md mt-5 md:mt-0">
+    <div className="p-5 bg-primary rounded-md mt-5 md:mt-0">
       <form onSubmit={handleSubmit(onSubmit, onError)}>
-        <h1 className="text-[#333B4E] text-xl font-semibold ">Media</h1>
+        <h1 className="text-color text-xl font-semibold ">Media</h1>
         <div className="w-full md:w-1/2 dark:bg-darkButtonBg rounded-md bg-white">
           <SingleFileUpload
             attachment={
@@ -126,9 +126,9 @@ const MediaForm = () => {
         </div>
 
         {/* YouTube Video Link */}
-        <div className="shadow-md  bg-white mt-6 p-5 dark:bg-darkButtonBg rounded-md">
+        <div className="shadow-md  bg-primary mt-6 p-5 dark:bg-darkButtonBg rounded-md">
           <div className="flex items-center gap-4">
-            <h1 className="text-[#333B4E] text-sm sm:text-lg md:text-xl font-semibold ">
+            <h1 className="text-color text-sm sm:text-lg md:text-xl font-semibold ">
               Allow YouTube Video
             </h1>
             <Switch
@@ -169,7 +169,7 @@ const MediaForm = () => {
           {/* Cancel Button */}
           <button
             type="button"
-            className="px-2 md:px-4 flex py-1 md:py-2 text-xs sm:text-sm font-medium text-gray-700  border border-gray-300  rounded-md hover:bg-red-400  hover:text-white transition-all duration-300"
+            className="px-2 md:px-4 flex py-1 md:py-2 text-xs sm:text-sm font-medium text-color  border border-gray-300  rounded-md hover:bg-red-400  hover:text-white transition-all duration-300"
             onClick={() => {
               console.log("Form cancelled"); // Add logic to reset or navigate
             }}

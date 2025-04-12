@@ -48,48 +48,80 @@ const sampleProducts: Product[] = [
 ];
 const InfoSubCategory = () => {
   const [openDropdown, setOpenDropdown] = useState<null | number>(null);
+  const [selectedIds, setSelectedIds] = useState<number[]>([]);
+
+  const isAllSelected =
+    sampleProducts.length > 0 && selectedIds.length === sampleProducts.length;
+
+  const handleAllSelect = () => {
+    if (isAllSelected) {
+      setSelectedIds([]);
+    } else {
+      setSelectedIds(sampleProducts.map((simple) => simple.id));
+    }
+  };
+
+  const handleRowSelect = (id: number) => {
+    setSelectedIds((prev) =>
+      prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
+    );
+  };
 
   const toggleDropdown = (id: number) => {
     setOpenDropdown(openDropdown === id ? null : id);
   };
 
   return (
-    <div className="mt-5 bg-white p-5 rounded-md shadow-md">
-      <h2 className="text-[#0A0E1F] text-xl font-semibold">Subcategory Info</h2>
-      <div className="w-full overflow-x-auto  p-5 shadow-md rounded-md mt-5">
+    <div className="mt-5 bg-primary p-5 rounded-md shadow-md">
+      <h2 className="text-color text-xl font-semibold">Subcategory Info</h2>
+      <div className="w-full overflow-x-auto  p-5 shadow-md rounded-md mt-5 border dark:border-gray-700 border-gray-200">
         <table className="min-w-full">
-          <thead className="bg-[#F9FAFB] ">
+          <thead className="bg-background ">
             <tr>
-              <th className="px-6 py-5 text-left text-base font-semibold text-[#455468]  tracking-wider">
-                <input type="checkbox" className="rounded" />
+              <th className="px-6 py-5 text-left text-base font-semibold text-[#455468] dark:text-gray-300  tracking-wider">
+                <input
+                  type="checkbox"
+                  className="rounded"
+                  checked={isAllSelected}
+                  onChange={handleAllSelect}
+                />
               </th>
-              <th className="px-6 py-5 text-left text-base font-semibold text-[#455468]  tracking-wider">
+              <th className="px-6 py-5 text-left text-base font-semibold text-[#455468] dark:text-gray-300  tracking-wider">
                 Subcategory
               </th>
-              <th className="px-6 py-5 text-left text-base font-semibold text-[#455468]  tracking-wider">
+              <th className="px-6 py-5 text-left text-base font-semibold text-[#455468] dark:text-gray-300  tracking-wider">
                 Slug
               </th>
-              <th className="px-6 py-5 text-left text-base font-semibold text-[#455468]  tracking-wider">
+              <th className="px-6 py-5 text-left text-base font-semibold text-[#455468] dark:text-gray-300  tracking-wider">
                 Total{"\u00A0"}Products
               </th>
-              <th className="px-6 py-5 text-left text-base font-semibold text-[#455468]  tracking-wider">
+              <th className="px-6 py-5 text-left text-base font-semibold text-[#455468] dark:text-gray-300  tracking-wider">
                 Status
               </th>
-              <th className="px-6 py-5 text-left text-base font-semibold text-[#455468]  tracking-wider">
+              <th className="px-6 py-5 text-left text-base font-semibold text-[#455468] dark:text-gray-300  tracking-wider">
                 Action
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white">
+          <tbody className="bg-background">
             {sampleProducts.map((product) => (
               <tr
                 key={product.id}
-                className={product.id % 2 === 0 ? "bg-[#F9FAFB]" : "bg-white"}
+                className={
+                  product.id % 2 === 0
+                    ? "bg-[#F9FAFB] dark:bg-[#111827]"
+                    : "bg-white dark:bg-[#1e293b]"
+                }
               >
                 <td className="px-6 py-4 whitespace-nowrap">
-                  <input type="checkbox" className="rounded" />
+                  <input
+                    type="checkbox"
+                    className="rounded"
+                    checked={selectedIds.includes(product.id)}
+                    onChange={() => handleRowSelect(product.id)}
+                  />
                 </td>
-                <td className="px-6 py-4 flex items-center gap-2 whitespace-nowrap font-medium text-sm text-[#455468]">
+                <td className="px-6 py-4 flex items-center gap-2 whitespace-nowrap font-medium text-sm text-[#455468] dark:text-gray-300">
                   <Image
                     src={product.img}
                     width={100}
@@ -99,10 +131,10 @@ const InfoSubCategory = () => {
                   />
                   {product.name}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrap font-medium text-sm text-[#455468]">
+                <td className="px-6 py-4 whitespace-nowrap font-medium text-sm text-[#455468] dark:text-gray-300">
                   {product.slug}
                 </td>
-                <td className="px-6 py-4 whitespace-nowrapont-medium text-sm text-[#455468]">
+                <td className="px-6 py-4 whitespace-nowrapont-medium text-sm text-[#455468] dark:text-gray-300">
                   {product.totalSubCategory}
                 </td>
                 <td className="px-6 py-4 whitespace-nowrap">
@@ -123,9 +155,9 @@ const InfoSubCategory = () => {
                 <td className="px-6 py-4  relative whitespace-nowrap text-sm font-medium ">
                   <button
                     onClick={() => toggleDropdown(product.id)}
-                    className="cursor-pointer"
+                    className="cursor-pointer text-[#1C274C] dark:text-gray-300"
                   >
-                    <HiDotsVertical color="#1C274C" size={20} />
+                    <HiDotsVertical size={20} />
                   </button>
                   {openDropdown === product.id && (
                     <div className="absolute left-12 top-6 bg-white shadow-md px-4 py-2 rounded-md  transition-all duration-300 ease-in-out">
@@ -143,7 +175,7 @@ const InfoSubCategory = () => {
           </tbody>
         </table>
       </div>
-      <h3 className="text-center mt-5 text-[#333B4E] text-base font-medium">
+      <h3 className="text-center mt-5 text-color text-base font-medium">
         Copyright 2025 © Onekart theme by softwareinnovations
       </h3>
     </div>

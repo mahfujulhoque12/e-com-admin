@@ -32,14 +32,14 @@ const CustomTextArea: React.FC<CustomTextAreaProps> = ({
           <div className={cn("flex flex-col", className)}>
             <label
               htmlFor={name}
-              className=" text-base font-medium text-[#333B4E] "
+              className=" text-base font-medium text-color "
             >
               {label}
             </label>
             <textarea
               {...field}
               placeholder={placeholder || `Enter Your ${label}`}
-              className="w-full  outline-none p-2 resize-none bg-[#F9FBFC] border rounded-md mt-2 border-[#E6EBEE]"
+              className="w-full  outline-none p-2 resize-none input-bg border rounded-md mt-2 border-[#E6EBEE] dark:border-gray-700"
               rows={4}
             />
           </div>

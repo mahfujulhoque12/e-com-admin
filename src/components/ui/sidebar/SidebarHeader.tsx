@@ -49,13 +49,13 @@ const SidebarHeader: React.FC<SidebarHeaderProps> = ({
       </Link>
       <div
         className={cn(
-          `hidden lg:block absolute bg-white right-[-16px] rounded-full top-[50%] shadow-sm`,
+          `hidden lg:block absolute bg-primary border border-gray-300 dark:border-gray-600 right-[-16px] rounded-full top-[50%] shadow-md`,
           className
         )}
       >
         <button
           onClick={toggleAppSlidebar}
-          className="p-2 text-gray-600 hover:text-gray-800 focus:outline-none cursor-pointer "
+          className="p-2 text-gray-600 hover:text-gray-800 dark:text-gray-300 focus:outline-none cursor-pointer  dark:hover:text-gray-200 "
         >
           {isOpen ? <BiChevronLeft size={20} /> : <BiChevronRight size={20} />}
         </button>

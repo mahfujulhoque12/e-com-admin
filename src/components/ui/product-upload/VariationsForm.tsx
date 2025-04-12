@@ -53,9 +53,9 @@ export default function VariationsForm() {
   };
 
   return (
-    <div className="bg-white p-5 shadow-md rounded-md mt-5 md:mt-0">
+    <div className="bg-primary p-5 shadow-md rounded-md mt-5 md:mt-0">
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-        <h1 className="text-[#333B4E] text-xl font-semibold ">Variations</h1>
+        <h1 className="text-color text-xl font-semibold ">Variations</h1>
 
         {/* Product Type Dropdown */}
         <div className="flex flex-col md:flex-row gap-3 mt-5">
@@ -81,7 +81,7 @@ export default function VariationsForm() {
 
         {/* Variations Repeater */}
         {fields.map((field, index) => (
-          <div key={field.id} className="bg-white p-4 rounded-md shadow-md">
+          <div key={field.id} className="bg-primary p-4 rounded-md shadow-md">
             <h1 className="tetext-[#333B4E] text-xl font-semibold ">
               Set Variations
             </h1>

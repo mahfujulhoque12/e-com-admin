@@ -76,9 +76,10 @@ const Sidebar: React.FC<SidebarProps> = ({
       <div>
         {/* Sidebar */}
         <Backdrop onClick={handleHamburgerClick} isVisible={isMobileMenuOpen} />
+
         <div
           className={cn(
-            "fixed  top-0 left-0 z-[61] bg-white shadow-lg dark:bg-darkPrimaryBg h-screen lg:h-[calc(100vh-40px)] transition-all duration-300 transform",
+            "fixed  top-0 left-0 z-[61] bg-primary shadow-lg dark:bg-darkPrimaryBg h-screen lg:h-[calc(100vh-40px)] transition-all duration-300 transform",
             isMobileMenuOpen
               ? "translate-x-0 scale-100 shadow-active "
               : "-translate-x-full shadow-hidden",
@@ -99,7 +100,6 @@ const Sidebar: React.FC<SidebarProps> = ({
               isOpen={isOpen || isMobileMenuOpen}
               toggleAppSlidebar={toggleAppSlidebar}
             />
-
             {/* Navigation Items */}
             <nav className="flex-grow overflow-y-auto space-y-2 nav-no-scrollbar  px-3">
               {items.map((item, index) => {
@@ -114,8 +114,8 @@ const Sidebar: React.FC<SidebarProps> = ({
                     key={index}
                     href={item.href}
                     className={cn(
-                      "group relative flex items-center gap-3 p-3 text-base font-normal rounded-md transition-all duration-200 ",
-                      "hover:text-white hover:bg-[#1768D0]",
+                      "group relative flex items-center gap-3 p-3 text-base font-normal dark:text-red-400 rounded-md transition-all duration-200 ",
+                      "hover:text-white hover:bg-[#1768D0] dark:text-white",
                       isActive ? "bg-[#1768D0] text-white " : "text-gray-700 ",
                       !(isOpen || isMobileMenuOpen) && "justify-center"
                     )}
@@ -123,9 +123,9 @@ const Sidebar: React.FC<SidebarProps> = ({
                   >
                     <div
                       className={cn(
-                        "flex items-center justify-center transition-colors duration-200",
+                        "flex items-center justify-center transition-colors duration-200 dark:text-white",
                         isActive
-                          ? "text-white "
+                          ? "text-white dark:text-white "
                           : "text-gray-900 group-hover:text-white  dark:group-hover:text-white"
                       )}
                     >
@@ -140,8 +140,8 @@ const Sidebar: React.FC<SidebarProps> = ({
                         className={cn(
                           "transition-opacity duration-200 ",
                           isActive
-                            ? "text-white"
-                            : "text-gray-700 group-hover:text-white "
+                            ? "text-white dark:text-white"
+                            : "text-gray-700 group-hover:text-white dark:text-white "
                         )}
                       >
                         {item.label}
@@ -151,13 +151,13 @@ const Sidebar: React.FC<SidebarProps> = ({
                 );
               })}
             </nav>
-
+            
             {/* Logout Section */}
             <div className="flex-shrink-0 px-4 py-3 ">
               <button
                 onClick={() => setShowModal(true)}
                 className={cn(
-                  "group flex items-center gap-3 p-3 text-base font-semibold rounded-md transition-all duration-300 hover:text-white hover:bg-[#1768D0]",
+                  "group flex items-center gap-3 p-3 text-base font-semibold rounded-md transition-all duration-300 dark:text-white hover:text-white hover:bg-[#1768D0]",
                   "text-gray-700",
                   !(isOpen || isMobileMenuOpen) && "justify-center"
                 )}
@@ -169,7 +169,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               <Link
                 href="#"
                 className={cn(
-                  "group flex items-center gap-3 p-3 text-base font-semibold rounded-md transition-all duration-300 hover:text-white hover:bg-[#1768D0]",
+                  "group flex items-center gap-3 p-3 text-base font-semibold rounded-md transition-all duration-300 dark:text-white hover:text-white hover:bg-[#1768D0]",
                   pathname === "#" && "bg-[#1768D0] text-white",
                   !(isOpen || isMobileMenuOpen) && "justify-center",
                   "text-gray-700"
@@ -183,7 +183,7 @@ const Sidebar: React.FC<SidebarProps> = ({
               <Link
                 href="#"
                 className={cn(
-                  "group flex items-center gap-3 p-3 text-base font-semibold rounded-md transition-all duration-300 hover:text-white hover:bg-[#1768D0] ",
+                  "group flex items-center gap-3 p-3 text-base font-semibold rounded-md transition-all dark:text-white duration-300 hover:text-white hover:bg-[#1768D0] ",
                   pathname === "#" && "bg-[#1768D0] text-white",
                   !(isOpen || isMobileMenuOpen) && "justify-center",
                   "text-gray-700"

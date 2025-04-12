@@ -1,1 +1,57 @@
 @import "tailwindcss";
+
+/* Enable class-based dark mode */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Import compatible plugins */
+@plugin 'tailwind-scrollbar';
+
+/* Define custom colors using CSS variables */
+@theme {
+  --background: #eff3f8; /* Red for light mode */
+  --background-primary: #ffffff; /* White for light mode */
+  --background-btn: #fff; /* White for light mode */
+  --text: #0a0e1f;
+  --text-title: #333b4e;
+  --sidebar: #000;
+  --input-bg:#F9FBFC
+}
+
+.dark {
+  --background: #111827; /* Yellow for dark mode */
+  --background-primary: #1e293b; /* Dark blue-gray for dark mode */
+  --background-btn: #313d4a; /* Darker gray for dark mode */
+  --text: #cfcfcf;
+  --text-title: #fff;
+  --sidebar: #fff;
+  --input-bg:#111827
+}
+
+/* darkMainBg: "#111827",
+darkPrimaryBg: "#1E293B",
+darkButtonBg: "#313d4a", */
+
+/* Define custom utilities */
+@layer utilities {
+  .bg-background {
+    background-color: var(--background);
+  }
+  .bg-primary {
+    background-color: var(--background-primary);
+  }
+  .bg-btn {
+    background-color: var(--background-btn);
+  }
+  .text-color-btn {
+    color: var(--text);
+  }
+  .text-color {
+    color: var(--text-title);
+  }
+  .sidebar-text {
+    color: var(--sidebar);
+  }
+  .input-bg{
+    background-color: var(--input-bg);
+  }
+}

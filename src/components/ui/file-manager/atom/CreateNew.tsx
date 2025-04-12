@@ -77,12 +77,12 @@ const CreateNew = () => {
       </button>
 
       {isDropdownOpen && (
-        <div className="absolute left mt-2 w-48 bg-white rounded-md shadow-lg z-10 border border-gray-300">
+        <div className="absolute left mt-2 w-48 bg-background rounded-md shadow-lg z-10 border border-gray-300 dark:border-gray-700">
           <div className="py-1">
             {dropdownItems.map((item) => (
               <button
                 key={item.id}
-                className="flex items-center gap-2 w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                className="flex items-center gap-2 w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:hover:bg-gray-600 dark:text-gray-200"
                 onClick={() => handleDropdownItemClick(item.id)}
               >
                 {item.icon}

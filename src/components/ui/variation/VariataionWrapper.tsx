@@ -59,18 +59,16 @@ const VariataionWrapper = () => {
   return (
     <div>
       {/* add variation start */}
-      <div className="flex flex-col sm:flex-row gap-5 bg-white p-5 shadow-md rounded-md mt-5">
+      <div className="flex flex-col sm:flex-row gap-5 bg-primary p-5 shadow-md rounded-md mt-5">
         <div className="basis-full sm:basis-[35%]">
-          <h2 className="font-semibold text-xl text-[#333B4E]">
-            New Variation
-          </h2>
-          <p className="text-base font-medium text-[#333B4E] mt-4">
+          <h2 className="font-semibold text-xl text-color">New Variation</h2>
+          <p className="text-base font-medium text-color mt-4">
             Variation Name
           </p>
         </div>
         <div className="basis-full sm:basis-[65%]">
           <form onSubmit={handleSubmit(onSubmit)}>
-            <div className="flex items-center gap-4 bg-[#F9FBFC] border border-[#E6EBEE] px-4 py-1 rounded-md ">
+            <div className="flex items-center gap-4 input-bg border border-[#E6EBEE] dark:border-gray-700 px-4 py-1 rounded-md ">
               <div className="flex flex-col gap-2 w-full">
                 <input
                   {...register("color", { required: true })}
@@ -97,12 +95,10 @@ const VariataionWrapper = () => {
       {/* add variation end */}
 
       {/* show data start */}
-      <div className="gap-5 bg-white p-5 shadow-md rounded-md mt-5">
-        <h2 className="text-[#0A0E1F] font-semibold text-xl">
-          Variations List
-        </h2>
-        <div className="border border-gray-300 p-5 rounded-md mt-5">
-          <p className="text-[#333B4E] text-base font-semibold flex items-center gap-2">
+      <div className="gap-5 bg-primary p-5 shadow-md rounded-md mt-5">
+        <h2 className="text-color font-semibold text-xl">Variations List</h2>
+        <div className="border border-gray-300 dark:border-gray-700 p-5 rounded-md mt-5">
+          <p className="text-color text-base font-semibold flex items-center gap-2">
             Color{" "}
             <button className="cursor-pointer">
               <RiEditLine size={20} color="#0070FF" />
@@ -132,12 +128,12 @@ const VariataionWrapper = () => {
                     </button>
 
                     {openDropdown === variation.id && (
-                      <div className="absolute left-0 top-10 bg-white shadow-md px-4 py-2 rounded-md transition-all duration-300 ease-in-out z-10">
-                        <button className="cursor-pointer mr-4 text-[#333B4E] flex items-center text-sm font-medium gap-2">
+                      <div className="absolute left-0 top-10 bg-background shadow-md px-4 py-2 rounded-md transition-all duration-300 ease-in-out z-10">
+                        <button className="cursor-pointer mr-4 text-color flex items-center text-sm font-medium gap-2">
                           <MdEdit size={20} color="#0070FF" />
                           Edit
                         </button>
-                        <button className="cursor-pointer mr-4 text-[#333B4E] flex items-center text-sm font-medium mt-5 gap-2">
+                        <button className="cursor-pointer mr-4 text-color flex items-center text-sm font-medium mt-5 gap-2">
                           <RiDeleteBin5Line size={20} color="#FF2147" />
                           Delete
                         </button>
@@ -152,7 +148,7 @@ const VariataionWrapper = () => {
             <div className="relative flex-shrink-0">
               <button
                 onClick={() => setIsModalOpen(true)}
-                className="px-3 py-2 cursor-pointer text-xs font-medium text-[#333B4E] rounded-md shadow-sm flex items-center gap-1"
+                className="px-3 py-2 cursor-pointer text-xs font-medium text-color rounded-md shadow-sm flex items-center gap-1"
               >
                 <IoIosAddCircleOutline size={18} />
                 Add More

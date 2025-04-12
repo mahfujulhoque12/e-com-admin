@@ -24,7 +24,7 @@ const Pagination: React.FC = () => {
             className={`px-2 sm:px-3 py-1 rounded-md text-xs sm:text-sm mx-0.5 sm:mx-1 font-semibold transition ${
               i === currentPage
                 ? "bg-[#1571E7] text-white dark:bg-darkMainBg"
-                : "bg-[#F9FBFC] text-gray-900 dark:bg-darkButtonBg hover:bg-gray-200"
+                : "bg-background text-color dark:bg-darkButtonBg hover:bg-gray-200"
             }`}
           >
             {i}

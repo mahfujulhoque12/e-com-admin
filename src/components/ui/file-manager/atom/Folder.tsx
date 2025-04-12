@@ -36,7 +36,7 @@ const Folder = () => {
       {fileMangerData.map((file) => (
         <div
           key={file.id}
-          className="bg-white p-2 rounded-md shadow-md relative border border-gray-200"
+          className="bg-primary p-2 rounded-md shadow-md relative border border-gray-200 dark:border-gray-700"
         >
           <div className="flex items-center">
             <Image
@@ -47,10 +47,10 @@ const Folder = () => {
               className="h-28 w-28"
             />
             <div className="flex flex-col">
-              <p className="text-base font-semibold text-gray-800">
+              <p className="text-base font-semibold text-gray-800 dark:text-gray-200">
                 {file.title}
               </p>
-              <span className="text-sm font-semibold text-gray-600">
+              <span className="text-sm font-semibold text-gray-600 dark:text-gray-300">
                 {file.subTitle}
               </span>
             </div>
@@ -69,20 +69,20 @@ const Folder = () => {
               <BsThreeDotsVertical size={20} />
             </button>
             {openDropdown === file.id && (
-              <div className="absolute right-2 top-8 bg-white shadow-md px-4 py-2 rounded-md border border-gray-300 z-50">
-                <button className="text-gray-600 text-base flex items-center gap-3">
+              <div className="absolute right-2 top-8 bg-background shadow-md px-4 py-2 rounded-md border border-gray-300 dark:border-gray-700 z-50">
+                <button className="text-gray-600 dark:text-gray-200 text-base flex items-center gap-3">
                   <CiEdit size={18} />
                   Edit
                 </button>
-                <button className="text-gray-600 text-base flex items-center gap-3 mt-2">
+                <button className="text-gray-600 dark:text-gray-200 text-base flex items-center gap-3 mt-2">
                   <IoIosLink size={18} />
                   Copy Link
                 </button>
-                <button className="text-gray-600 text-base flex items-center gap-3 mt-2">
+                <button className="text-gray-600 dark:text-gray-200 text-base flex items-center gap-3 mt-2">
                   <CiShare2 size={18} />
                   Share
                 </button>
-                <button className="text-gray-600 text-base flex items-center gap-3 mt-2">
+                <button className="text-gray-600 dark:text-gray-200 text-base flex items-center gap-3 mt-2">
                   <LiaDownloadSolid size={18} />
                   Download
                 </button>
@@ -91,11 +91,11 @@ const Folder = () => {
           </div>
 
           <div className="flex items-center px-6 pb-5">
-            <p className="text-base font-semibold text-gray-500">
+            <p className="text-base font-semibold text-gray-500 dark:text-gray-300 ">
               {file.memory}
             </p>
             <BsDot />
-            <span className="text-base font-semibold text-gray-500">
+            <span className="text-base font-semibold text-gray-500 dark:text-gray-300">
               {file.files}
             </span>
           </div>

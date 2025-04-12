@@ -101,7 +101,9 @@ const MultipleFileUpload: React.FC<MultipleFileUploadProps> = ({
         <h1 className="font-semibold capitalize text-base  text-[#6365EF]">
           {cardTitle}
         </h1>
-        <p className="text-[#666666] text-xs font-normal mt-1">{cardDes}</p>
+        <p className="text-[#666666] dark:text-gray-300 text-xs font-normal mt-1">
+          {cardDes}
+        </p>
         <div
           className={`flex border-dashed border-2 mt-4 rounded-md ${
             isMultipuleDragOver
@@ -121,7 +123,7 @@ const MultipleFileUpload: React.FC<MultipleFileUploadProps> = ({
               onChange={handleMultipuleFileInputChange}
               className="hidden "
             />
-            <span className="text-[#243045] py-1 text-xs lg:text-sm font-normal ">
+            <span className="text-color py-1 text-xs lg:text-sm font-normal ">
               Drag your files to start uploading
             </span>
             <div className="flex items-center gap-3">
@@ -140,7 +142,7 @@ const MultipleFileUpload: React.FC<MultipleFileUploadProps> = ({
             </button>
           </div>
         </div>
-        <p className="text-[#656565] font-normal text-sm mt-2 lg:text-base sm:mt-1 ">
+        <p className="text-[#656565] dark:text-gray-300 font-normal text-sm mt-2 lg:text-base sm:mt-1 ">
           <span className="text-[#FF2147]"> Note: </span>
           Upload up to {maxFiles} JPG, PNG & WEBP files. File Size Max{" "}
           {maxFileSize} MB each.
@@ -154,7 +156,7 @@ const MultipleFileUpload: React.FC<MultipleFileUploadProps> = ({
               className="relative border rounded-md shadow-md p-2"
             >
               <button
-                className="absolute top-0 right-0 bg-red-300 py-2 text-xs px-2 text-white rounded-full hover:bg-red-500 transition-all duration-200"
+                className="absolute top-0 right-0 bg-red-300  py-2 text-xs px-2 text-white rounded-full hover:bg-red-500 transition-all duration-200"
                 onClick={() => removeFile(index)}
                 type="button"
               >
