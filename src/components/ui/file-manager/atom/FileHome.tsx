@@ -38,7 +38,7 @@ const FileHome = () => {
           Folders
         </p>
         <div className="flex items-center gap-2">
-          <span className="text-sm font-medium text-[#455468] dark:text-gray-300 dark:text-gray-200">
+          <span className="text-sm font-medium text-[#455468] dark:text-gray-300 ">
             Search:
           </span>
           <input

@@ -1,16 +1,19 @@
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
-import ResuableInput from "../../product-upload/atom/ResuableInput";
-import MultipleFileUpload from "../../product-upload/atom/MultipuleFileUpload";
+
 import {
   MediaFormData,
   setMediaFormData,
 } from "@/redux/feature/product-upload/media/mediaSlice";
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/redux-store/store";
-import ResuableDropdownMenu from "../../product-upload/atom/ResuableDropdownMenu";
+
 import { CategoryEnum } from "@/types/ProductFormTypes";
 import { NewSubCategoryType } from "@/types/CategoryTyes";
+import ResuableInput from "../../products/product-upload/atom/ResuableInput";
+import ResuableDropdownMenu from "../../products/product-upload/atom/ResuableDropdownMenu";
+import MultipleFileUpload from "../../products/product-upload/atom/MultipuleFileUpload";
+
 
 const NewSubCategory = () => {
   const mediaFormData = useSelector((state: RootState) => state.media);

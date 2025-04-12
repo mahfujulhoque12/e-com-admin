@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import FileHome from "./atom/FileHome";
+import { FaCheckCircle } from "react-icons/fa";
 
 interface Tab {
   id: string;
@@ -45,13 +46,14 @@ const FileManagerWrapper = () => {
           {tabs.map((tab) => (
             <button
               key={tab.id}
-              className={`px-4 text-base py-2 font-medium ${
+              className={`px-4 flex gap-1 items-center text-base py-2 font-medium ${
                 activeTab === tab.id
                   ? "border-b-2 border-blue-500 text-blue-500 font-semibold"
                   : "text-gray-600 dark:text-gray-200 hover:text-blue-600"
               }`}
               onClick={() => handleTabClick(tab.id)}
             >
+              <FaCheckCircle />
               {tab.label}
             </button>
           ))}

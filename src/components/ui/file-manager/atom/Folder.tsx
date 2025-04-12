@@ -1,5 +1,6 @@
 import { fileMangerData } from "@/data/FileManagerData";
 import Image from "next/image";
+import Link from "next/link";
 import React, { useEffect, useRef, useState } from "react";
 import { BsDot, BsThreeDotsVertical } from "react-icons/bs";
 import { CiEdit, CiShare2 } from "react-icons/ci";
@@ -38,22 +39,27 @@ const Folder = () => {
           key={file.id}
           className="bg-primary p-2 rounded-md shadow-md relative border border-gray-200 dark:border-gray-700"
         >
-          <div className="flex items-center">
-            <Image
-              src={file.img}
-              width={300}
-              height={300}
-              alt="file"
-              className="h-28 w-28"
-            />
-            <div className="flex flex-col">
-              <p className="text-base font-semibold text-gray-800 dark:text-gray-200">
-                {file.title}
-              </p>
-              <span className="text-sm font-semibold text-gray-600 dark:text-gray-300">
-                {file.subTitle}
-              </span>
-            </div>
+          <div>
+            <Link
+              className="flex items-center"
+              href={`/file-manager/${file.slug}`}
+            >
+              <Image
+                src={file.img}
+                width={300}
+                height={300}
+                alt="file"
+                className="h-28 w-28"
+              />
+              <div className="flex flex-col">
+                <p className="text-base font-semibold text-gray-800 dark:text-gray-200">
+                  {file.title}
+                </p>
+                <span className="text-sm font-semibold text-gray-600 dark:text-gray-300">
+                  {file.subTitle}
+                </span>
+              </div>
+            </Link>
           </div>
 
           <div

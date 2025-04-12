@@ -1,7 +1,7 @@
 import ProductsListWrapper from "@/components/ui/products/ProductsListWrapper";
 import React from "react";
 
-const page = () => {
+const ProductListPage = () => {
   return (
     <div>
       <ProductsListWrapper />
@@ -9,4 +9,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default ProductListPage;

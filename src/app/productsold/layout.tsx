@@ -1,35 +1,44 @@
 "use client";
 
-import TabNavigation from "@/components/ui/product-upload/atom/TabNavigation";
+import TabNavigation from "@/components/ui/products/product-upload/atom/TabNavigation";
 import Topbar from "@/components/ui/topbar/Topbar";
 import { toggleMobileMenu } from "@/redux/feature/sidebar/sidebarSlice";
 import { useDispatch } from "react-redux";
 
 const tabs = [
   {
-    label: "Product Details",
+    label: "Product list",
 
-    href: "/product-upload",
+    href: "/products",
   },
 
   {
-    label: "Variations",
+    label: "Order List",
 
-    href: "/product-upload/variations",
+    href: "/products/order-list",
   },
   {
-    label: "Media",
+    label: "Customer List",
 
-    href: "/product-upload/media",
+    href: "/products/customer-list",
   },
-  { label: "Payment Type", href: "/product-upload/payment-type" },
   {
-    label: "Policies",
+    label: "Payment List",
 
-    href: "/product-upload/policies",
+    href: "/products/payment-list",
+  },
+  {
+    label: "Review List",
+
+    href: "/products/review-list",
+  },
+  {
+    label: "Banner List",
+
+    href: "/products/banner-list",
   },
 ];
-export default function ProductLayout({
+export default function ProductsLayout({
   children,
 }: {
   children: React.ReactNode;
