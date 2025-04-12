@@ -69,7 +69,7 @@ const Topbar: React.FC<TopBarProps> = ({
           className="w-10 h-10  lg:hidden  "
           aria-label="Toggle Sidebar"
         >
-          <BiMenu className="w-6 h-6 text-gray-700 " />
+          <BiMenu className="w-6 h-6 text-gray-700 dark:text-gray-300" />
         </button>
         <button className=" flex gap-2.5 items-center text-lg sm:text-xl md:text-2xl lg:text-3xl  text-color font-semibold m-0 md:mt-0">
           <RiDashboardLine />
@@ -81,7 +81,7 @@ const Topbar: React.FC<TopBarProps> = ({
       <div className="flex items-center gap-2 relative">
         {/* MOBILE ONLY: The "txt" button that toggles the rest of the icons */}
         <button
-          className="bg-[#F4F7FE4D] relative text-[#8391A1] shadow-sm p-2 rounded-full dark:bg-darkbuttonBg  block md:hidden"
+          className="bg-[#F4F7FE4D] relative text-[#8391A1] dark:text-gray-300 shadow-sm p-2 rounded-full dark:bg-darkbuttonBg  block md:hidden"
           onClick={() => setIsMobileMenuOpen((prev) => !prev)}
         >
           {isMobileMenuOpen ? <IoIosArrowDown /> : <IoIosArrowUp />}
@@ -93,7 +93,7 @@ const Topbar: React.FC<TopBarProps> = ({
           className={`
             ${
               isMobileMenuOpen
-                ? "flex flex-col md:flex-row absolute top-12 right-5   bg-white dark:bg-darkPrimaryBg rounded-md shadow-md  animate-slide-down px-4 py-2"
+                ? "flex flex-col md:flex-row absolute top-12 right-5   bg-white bg-primary rounded-md shadow-md  animate-slide-down px-4 py-2"
                 : "hidden top-0 right-0 "
             } 
             md:flex 
@@ -118,7 +118,10 @@ const Topbar: React.FC<TopBarProps> = ({
               <span className="text-xs md:hidden">Notification</span>
             </div>
             <div className="flex items-center gap-2">
-              <ThemeToggle />
+              <div className="bg-btn relative text-color-btn shadow-sm  rounded-full ">
+                <ThemeToggle />
+              </div>
+              <span className="text-xs md:hidden">Mood</span>
             </div>
           </div>
 
