@@ -1,5 +1,6 @@
 "use client";
-import PaymentForm from "@/components/ui/product-upload/PaymentForm";
+
+import PaymentForm from "@/components/ui/products/product-upload/PaymentForm";
 import React from "react";
 
 const page = () => {

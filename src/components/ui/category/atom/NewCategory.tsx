@@ -1,7 +1,6 @@
 import React, { useRef } from "react";
 import { useForm } from "react-hook-form";
-import ResuableInput from "../../product-upload/atom/ResuableInput";
-import MultipleFileUpload from "../../product-upload/atom/MultipuleFileUpload";
+
 import {
   MediaFormData,
   setMediaFormData,
@@ -9,6 +8,8 @@ import {
 import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "@/redux/redux-store/store";
 import { NewCategoryType } from "@/types/CategoryTyes";
+import ResuableInput from "../../products/product-upload/atom/ResuableInput";
+import MultipleFileUpload from "../../products/product-upload/atom/MultipuleFileUpload";
 
 const NewCategory = () => {
   const mediaFormData = useSelector((state: RootState) => state.media);

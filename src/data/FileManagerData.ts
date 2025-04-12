@@ -9,12 +9,13 @@ interface Product {
   subTitle: string;
   memory: string;
   files: string;
+  slug: string;
 }
 
 export const fileMangerData: Product[] = [
   {
     id: 1,
-
+    slug: "doucments",
     img: file,
     title: "Doucments",
     subTitle: "Using 25% of storage",
@@ -25,6 +26,7 @@ export const fileMangerData: Product[] = [
     id: 2,
 
     img: file,
+    slug: "music",
     title: "Music",
     subTitle: "Using 16% of storage",
     memory: "4GB ",
@@ -34,6 +36,7 @@ export const fileMangerData: Product[] = [
     id: 3,
 
     img: file,
+    slug: "apps",
     title: "Apps",
     subTitle: "Using 52% of storage",
     memory: "7GB ",
@@ -43,6 +46,7 @@ export const fileMangerData: Product[] = [
     id: 4,
 
     img: file,
+    slug: "videos",
     title: "Videos",
     subTitle: "Using 85% of storage",
     memory: "16GB ",

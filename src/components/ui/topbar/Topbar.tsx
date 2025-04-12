@@ -7,7 +7,7 @@ import flag from "/public/topbar/flag.svg";
 import admin from "/public/topbar/admin.png";
 
 import { BiMenu } from "react-icons/bi";
-import { RiDashboardLine } from "react-icons/ri";
+
 import { PiBellZBold } from "react-icons/pi";
 import Profile from "./atom/Profile";
 import ThemeToggle from "@/components/theme-provider/ThemeToggle";
@@ -38,11 +38,15 @@ const useDropdown = () => {
 interface TopBarProps {
   handleHamburgerClick: () => void;
   isTopbarStyle?: boolean;
+  title?: string;
+  icon?: React.ReactNode;
 }
 
 const Topbar: React.FC<TopBarProps> = ({
   handleHamburgerClick,
   isTopbarStyle,
+  title,
+  icon,
 }) => {
   const languageDropdown = useDropdown();
   const adminDropdown = useDropdown();
@@ -72,8 +76,8 @@ const Topbar: React.FC<TopBarProps> = ({
           <BiMenu className="w-6 h-6 text-gray-700 dark:text-gray-300" />
         </button>
         <button className=" flex gap-2.5 items-center text-lg sm:text-xl md:text-2xl lg:text-3xl  text-color font-semibold m-0 md:mt-0">
-          <RiDashboardLine />
-          Bread cumb
+          {icon}
+          {title}
         </button>
       </div>
 

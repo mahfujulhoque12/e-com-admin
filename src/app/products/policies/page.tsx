@@ -1,11 +1,12 @@
 "use client";
-import MediaForm from "@/components/ui/product-upload/MediaForm";
+
+import PolicyForm from "@/components/ui/products/product-upload/PolicyForm";
 import React from "react";
 
 const page = () => {
   return (
     <div>
-      <MediaForm />
+      <PolicyForm />
     </div>
   );
 };

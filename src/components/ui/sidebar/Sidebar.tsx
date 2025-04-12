@@ -3,24 +3,24 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SidebarHeader from "./SidebarHeader";
 import { IoCloseSharp, IoMenu, IoSettingsOutline } from "react-icons/io5";
+import { BookingIcon, CustomerIcon } from "./Icons";
 import {
-  BookingIcon,
-  CustomerIcon,
-  DashboardIcon,
-  ReportIcon,
-  SearchIcons,
-  TopupIcon,
-  EmployeeIcon,
-  CompanyIcon,
-  RefundIcon,
-} from "./Icons";
-import { MdOutlineSupportAgent } from "react-icons/md";
+  MdCategory,
+  MdOutlinePayment,
+  MdOutlineSupportAgent,
+  MdPolicy,
+} from "react-icons/md";
 import { MdOutlineInsertDriveFile } from "react-icons/md";
 
 import { HiOutlineLogout } from "react-icons/hi";
 import { cn } from "@/lib/utils";
 import Backdrop from "./Backdrop";
 import Modal from "./Modal";
+import { BiSolidCategory, BiSolidCommentEdit } from "react-icons/bi";
+import { PiBrandyFill, PiKeyReturnFill } from "react-icons/pi";
+import { FaCartArrowDown, FaUsers } from "react-icons/fa";
+import { RiRefundFill } from "react-icons/ri";
+import { TiWarning } from "react-icons/ti";
 
 type SidebarItem = {
   label: string;
@@ -34,22 +34,37 @@ type SidebarItem = {
 };
 
 const items: SidebarItem[] = [
-  { label: "Sub-category", href: "/sub-category", icon: DashboardIcon },
-  { label: "Product", href: "/product-upload", icon: BookingIcon },
-  { label: "Products", href: "/products", icon: SearchIcons },
-  { label: "Category", href: "/category", icon: RefundIcon },
+  { label: "Products", href: "/products", icon: BookingIcon },
+  // { label: "Sub-category", href: "/sub-category", icon: DashboardIcon },
+  // { label: "Productsttt", href: "/productsold", icon: SearchIcons },
+  { label: "Categories", href: "/category", icon: BiSolidCategory },
+  {
+    label: "Product Categories",
+    href: "/product-categories",
+    icon: MdCategory,
+  },
+
   {
     label: "File Manager",
     href: "/file-manager",
     icon: MdOutlineInsertDriveFile,
   },
-  { label: "Variation", href: "/variation", icon: TopupIcon },
-  { label: "Customer", href: "/customer", icon: CustomerIcon },
-  { label: "Reports", href: "#", icon: ReportIcon },
+  { label: "Brands", href: "/brands", icon: PiBrandyFill },
 
-  { label: "Employees", href: "#", icon: EmployeeIcon },
-  { label: "Company", href: "#", icon: CompanyIcon },
-  { label: "Support", href: "#", icon: MdOutlineSupportAgent },
+  // { label: "Variation", href: "/variation", icon: TopupIcon },
+
+  { label: "Customer", href: "/customer", icon: CustomerIcon },
+  { label: "Users", href: "/users", icon: FaUsers },
+
+  { label: "Reviews", href: "/reviews", icon: BiSolidCommentEdit },
+  { label: "Payments", href: "/payments", icon: MdOutlinePayment },
+  { label: "Refund", href: "/refund", icon: RiRefundFill },
+  { label: "Return", href: "/return", icon: PiKeyReturnFill },
+  { label: "Waranty", href: "/waranty", icon: TiWarning },
+  { label: "Policy", href: "/policy", icon: MdPolicy },
+
+  { label: "Orders", href: "/orders", icon: FaCartArrowDown },
+  { label: "Support", href: "/support", icon: MdOutlineSupportAgent },
 ];
 
 interface SidebarProps {
@@ -151,7 +166,7 @@ const Sidebar: React.FC<SidebarProps> = ({
                 );
               })}
             </nav>
-            
+
             {/* Logout Section */}
             <div className="flex-shrink-0 px-4 py-3 ">
               <button

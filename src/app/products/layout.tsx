@@ -1,44 +1,48 @@
 "use client";
 
-import TabNavigation from "@/components/ui/product-upload/atom/TabNavigation";
+import TabNavigation from "@/components/ui/products/product-upload/atom/TabNavigation";
 import Topbar from "@/components/ui/topbar/Topbar";
 import { toggleMobileMenu } from "@/redux/feature/sidebar/sidebarSlice";
+import { BsCartXFill } from "react-icons/bs";
+
+import { FaClipboardList, FaUserTie } from "react-icons/fa";
+import { RiFileAddFill } from "react-icons/ri";
+import { TbBoxMultipleFilled } from "react-icons/tb";
 import { useDispatch } from "react-redux";
+import { RiDashboardLine } from "react-icons/ri";
 
 const tabs = [
   {
-    label: "Product list",
+    label: "Product List",
 
+    icon: <FaClipboardList size={18} />,
     href: "/products",
   },
 
   {
-    label: "Order List",
+    label: "Add Products",
+    icon: <RiFileAddFill size={18} />,
 
-    href: "/products/order-list",
+    href: "/products/add-product",
   },
   {
-    label: "Customer List",
+    label: "Variations",
+    icon: <TbBoxMultipleFilled size={18} />,
 
-    href: "/products/customer-list",
+    href: "/products/variations",
   },
   {
-    label: "Payment List",
-
-    href: "/products/payment-list",
+    label: "Out Of Stocks",
+    href: "/products/out-of-stocks",
+    icon: <BsCartXFill size={18} />,
   },
   {
-    label: "Review List",
-
-    href: "/products/review-list",
-  },
-  {
-    label: "Banner List",
-
-    href: "/products/banner-list",
+    label: "Affiliate",
+    icon: <FaUserTie size={18} />,
+    href: "/products/affiliate",
   },
 ];
-export default function ProductsLayout({
+export default function ProductLayout({
   children,
 }: {
   children: React.ReactNode;
@@ -55,6 +59,8 @@ export default function ProductsLayout({
         <Topbar
           handleHamburgerClick={handleHamburgerClick}
           isTopbarStyle={true}
+          icon={<RiDashboardLine />}
+          title="Products"
         />
         <TabNavigation tabs={tabs} />
       </div>
