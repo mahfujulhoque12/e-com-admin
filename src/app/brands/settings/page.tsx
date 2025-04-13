@@ -1,7 +1,7 @@
 import React from "react";
 
 const page = () => {
-  return <div>out of stocks</div>;
+  return <div>settings</div>;
 };
 
 export default page;

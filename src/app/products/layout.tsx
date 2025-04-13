@@ -10,6 +10,7 @@ import { RiFileAddFill } from "react-icons/ri";
 import { TbBoxMultipleFilled } from "react-icons/tb";
 import { useDispatch } from "react-redux";
 import { RiDashboardLine } from "react-icons/ri";
+import { IoSettings } from "react-icons/io5";
 
 const tabs = [
   {
@@ -26,20 +27,25 @@ const tabs = [
     href: "/products/add-product",
   },
   {
-    label: "Variations",
+    label: "Commissions",
     icon: <TbBoxMultipleFilled size={18} />,
 
-    href: "/products/variations",
+    href: "/products/commissions",
   },
   {
-    label: "Out Of Stocks",
-    href: "/products/out-of-stocks",
+    label: "Vendor Products",
+    href: "/products/vendor-products",
     icon: <BsCartXFill size={18} />,
   },
   {
     label: "Affiliate",
     icon: <FaUserTie size={18} />,
     href: "/products/affiliate",
+  },
+  {
+    label: "Settings",
+    icon: <IoSettings size={18} />,
+    href: "/products/settings",
   },
 ];
 export default function ProductLayout({

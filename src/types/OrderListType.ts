@@ -29,3 +29,28 @@ export enum CancelEnum {
   Processing = "Processing",
   Completed = "Completed",
 }
+
+export enum SelectCustomerEnum {
+  Badon = "Badon",
+  Joy = "Joy",
+  Alif = "Alif",
+  Nirob = "Nirob",
+  Safi = "Safi",
+  Sadin = "sadin",
+}
+
+export enum SelectPrductEnum {
+  Chips = "Chips",
+  Alo = "Alo",
+  Toamto = "Toamto",
+  Carot = "Carot",
+  ETC = "ETC",
+  Sadin = "sadin",
+}
+export enum SelectRatingEnum {
+  OneStart = "1 Star",
+  TwoStar = "2 Start",
+  ThreeStar = "ThreeStar",
+  FourStar = "FourStar",
+  FiveStar = "FiveStar",
+}

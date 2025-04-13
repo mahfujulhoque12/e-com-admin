@@ -3,7 +3,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import SidebarHeader from "./SidebarHeader";
 import { IoCloseSharp, IoMenu, IoSettingsOutline } from "react-icons/io5";
-import { BookingIcon, CustomerIcon } from "./Icons";
+import { BookingIcon, TopupIcon } from "./Icons";
 import {
   MdCategory,
   MdOutlinePayment,
@@ -18,7 +18,7 @@ import Backdrop from "./Backdrop";
 import Modal from "./Modal";
 import { BiSolidCategory, BiSolidCommentEdit } from "react-icons/bi";
 import { PiBrandyFill, PiKeyReturnFill } from "react-icons/pi";
-import { FaCartArrowDown, FaUsers } from "react-icons/fa";
+import { FaCartArrowDown, FaPeopleArrows, FaUsers } from "react-icons/fa";
 import { RiRefundFill } from "react-icons/ri";
 import { TiWarning } from "react-icons/ti";
 
@@ -44,16 +44,15 @@ const items: SidebarItem[] = [
     icon: MdCategory,
   },
 
+  { label: "Variation", href: "/variation", icon: TopupIcon },
+  { label: "Brands", href: "/brands", icon: PiBrandyFill },
+  { label: "Customer", href: "/customer", icon: FaPeopleArrows },
   {
     label: "File Manager",
     href: "/file-manager",
     icon: MdOutlineInsertDriveFile,
   },
-  { label: "Brands", href: "/brands", icon: PiBrandyFill },
 
-  // { label: "Variation", href: "/variation", icon: TopupIcon },
-
-  { label: "Customer", href: "/customer", icon: CustomerIcon },
   { label: "Users", href: "/users", icon: FaUsers },
 
   { label: "Reviews", href: "/reviews", icon: BiSolidCommentEdit },
