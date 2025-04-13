@@ -60,7 +60,9 @@ const ProductsDropdown = <T extends string>({
           <div
             key={name}
             className={`w-full focus-within:border-blue-500 focus-within:ring-blue-500  flex items-center bg-transparent outline-none cursor-pointer transition-all duration-300 ease-in-out justify-between ${
-              selectedOption ? "text-black" : "text-gray-500 dark:text-gray-200"
+              selectedOption
+                ? "text-black dark:text-gray-300"
+                : "text-gray-500 dark:text-gray-200"
             }`}
             onClick={() => setIsOpen(!isOpen)}
           >

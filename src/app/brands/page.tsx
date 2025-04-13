@@ -1,25 +1,12 @@
 "use client";
-import Topbar from "@/components/ui/topbar/Topbar";
-import { toggleMobileMenu } from "@/redux/feature/sidebar/sidebarSlice";
+
+import BrandList from "@/components/ui/brand/BrandList";
 import React from "react";
-import { PiBrandyFill } from "react-icons/pi";
-import { useDispatch } from "react-redux";
 
 const Page = () => {
-  const dispatch = useDispatch();
-  const handleHamburgerClick = () => {
-    dispatch(toggleMobileMenu());
-  };
   return (
     <div>
-      {" "}
-      <div className="sticky top-0 left-0 z-50  ">
-        <Topbar
-          handleHamburgerClick={handleHamburgerClick}
-          title="Brands"
-          icon={<PiBrandyFill />}
-        />
-      </div>
+      <BrandList />
     </div>
   );
 };

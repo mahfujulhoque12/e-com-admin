@@ -27,6 +27,7 @@ const ProductsListWrapper = () => {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<null | number>(null);
   const calendarRef = useRef<HTMLDivElement>(null);
+  const dropdownRefs = useRef<Record<number, HTMLDivElement | null>>({});
 
   // checkbox selection
   const [selectedIds, setSelectedIds] = useState<number[]>([]);
@@ -47,6 +48,24 @@ const ProductsListWrapper = () => {
       prev.includes(id) ? prev.filter((item) => item !== id) : [...prev, id]
     );
   };
+
+  // table dropdown
+  const handleClickOutside = (event: MouseEvent) => {
+    const isOutside = Object.values(dropdownRefs.current).every((ref) => {
+      return ref && !ref.contains(event.target as Node);
+    });
+    if (isOutside) {
+      setOpenDropdown(null);
+    }
+  };
+
+  useEffect(() => {
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
+    };
+  }, []);
+  // table dropdown
 
   // checkbox selection
 
@@ -342,22 +361,28 @@ const ProductsListWrapper = () => {
                   </td>
 
                   <td className="px-6 py-4  relative whitespace-nowrap text-sm font-medium ">
-                    <button
-                      onClick={() => toggleDropdown(product.id)}
-                      className="cursor-pointer text-[#1C274C] dark:text-gray-300"
+                    <div
+                      ref={(ref) => {
+                        dropdownRefs.current[product.id] = ref;
+                      }}
                     >
-                      <HiDotsVertical size={20} />
-                    </button>
-                    {openDropdown === product.id && (
-                      <div className="absolute left-12 top-6 bg-white shadow-md px-4 py-2 rounded-md  transition-all duration-300 ease-in-out">
-                        <button className="text-indigo-600 cursor-pointer hover:text-indigo-900 mr-4">
-                          Edit
-                        </button>
-                        <button className="text-red-600 hover:text-red-900 cursor-pointer">
-                          Delete
-                        </button>
-                      </div>
-                    )}
+                      <button
+                        onClick={() => toggleDropdown(product.id)}
+                        className="cursor-pointer text-[#1C274C] dark:text-gray-300"
+                      >
+                        <HiDotsVertical size={20} />
+                      </button>
+                      {openDropdown === product.id && (
+                        <div className="absolute left-0 top-16 bg-white shadow-md px-4 py-2 rounded-md  transition-all duration-300 ease-in-out">
+                          <button className="text-indigo-600 cursor-pointer hover:text-indigo-900 mr-4">
+                            Edit
+                          </button>
+                          <button className="text-red-600 hover:text-red-900 cursor-pointer">
+                            Delete
+                          </button>
+                        </div>
+                      )}
+                    </div>
                   </td>
                 </tr>
               ))}

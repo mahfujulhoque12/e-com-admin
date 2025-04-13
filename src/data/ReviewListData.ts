@@ -1,3 +1,5 @@
+import img from "/public/product/customer.png";
+import { StaticImageData } from "next/image";
 interface Product {
   id: number;
   paymentId: number;
@@ -10,6 +12,9 @@ interface Product {
   product: string;
   rating: number;
   review: string;
+  customerBehave: string;
+  img: string | StaticImageData;
+  customerName: string;
 }
 
 export const reviewListData: Product[] = [
@@ -25,6 +30,9 @@ export const reviewListData: Product[] = [
     product: "Chips, Coke, Cookies",
     rating: 4,
     review: "Amazing sound quality and comfortable fit!",
+    customerBehave: "Good Customer",
+    customerName: "John Doe",
+    img: img,
   },
   {
     id: 2,
@@ -38,6 +46,9 @@ export const reviewListData: Product[] = [
     product: "Chips, Coke, Cookies",
     rating: 3,
     review: "Amazing sound quality and comfortable fit!",
+    customerBehave: "Good Customer",
+    customerName: "John Doe",
+    img: img,
   },
   {
     id: 3,
@@ -51,6 +62,9 @@ export const reviewListData: Product[] = [
     date: "2025-04-01",
 
     payment: "unpaid",
+    customerBehave: "Bad Customer",
+    customerName: "John Doe",
+    img: img,
   },
   {
     id: 4,
@@ -64,6 +78,9 @@ export const reviewListData: Product[] = [
     date: "2025-04-01",
 
     payment: "unpaid",
+    customerBehave: "Good Customer",
+    customerName: "John Doe",
+    img: img,
   },
   {
     id: 5,
@@ -77,6 +94,9 @@ export const reviewListData: Product[] = [
     date: "2025-04-01",
 
     payment: "paid",
+    customerBehave: "Good Customer",
+    customerName: "John Doe",
+    img: img,
   },
   {
     id: 6,
@@ -90,6 +110,9 @@ export const reviewListData: Product[] = [
     date: "2025-04-01",
 
     payment: "paid",
+    customerBehave: "Bad Customer",
+    customerName: "John Doe",
+    img: img,
   },
   {
     id: 7,
@@ -103,5 +126,8 @@ export const reviewListData: Product[] = [
     date: "2025-04-01",
 
     payment: "paid",
+    customerBehave: "Good Customer",
+    customerName: "John Doe",
+    img: img,
   },
 ];

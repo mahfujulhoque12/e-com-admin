@@ -136,7 +136,7 @@ const FileHome = () => {
                         <HiDotsVertical size={20} />
                       </button>
                       {openDropdown === product.id && (
-                        <div className="absolute left-12 top-6 bg-white shadow-md px-4 py-2 rounded-md transition-all duration-300 ease-in-out">
+                        <div className="absolute left-2 top-16 bg-white shadow-md px-4 py-2 rounded-md transition-all duration-300 ease-in-out">
                           <button className="text-indigo-600 cursor-pointer hover:text-indigo-900 mr-4">
                             Edit
                           </button>
