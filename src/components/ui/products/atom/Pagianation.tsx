@@ -1,11 +1,17 @@
-import React, { useState } from "react";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
-import { FaEllipsis } from "react-icons/fa6";
 
-const Pagination: React.FC = () => {
-  const [currentPage, setCurrentPage] = useState(3);
-  const totalPages = 10;
-  const pageRange = 1; // shorter range for mobile-friendliness
+interface PaginationProps {
+  currentPage?: number | undefined;
+  totalPages?: number | undefined;
+  onPageChange?: (page: number) => void;
+}
+
+const Pagination: React.FC<PaginationProps> = ({
+  currentPage = 1,
+  totalPages = 1,
+  onPageChange = () => {},
+}) => {
+  const pageRange = 1;
 
   const renderPageNumbers = () => {
     const pages = [];
@@ -20,11 +26,11 @@ const Pagination: React.FC = () => {
         pages.push(
           <button
             key={i}
-            onClick={() => setCurrentPage(i)}
-            className={`px-2 sm:px-3 py-1 rounded-md text-xs sm:text-sm mx-0.5 sm:mx-1 font-semibold transition ${
+            onClick={() => onPageChange(i)}
+            className={`px-2 py-1 rounded-md text-sm font-semibold mx-1 transition ${
               i === currentPage
-                ? "bg-[#1571E7] text-white dark:bg-darkMainBg"
-                : "bg-background text-color dark:bg-darkButtonBg hover:bg-gray-200"
+                ? "bg-[#1571E7] text-white"
+                : "bg-background text-color hover:bg-gray-200 dark:hover:bg-gray-600"
             }`}
           >
             {i}
@@ -35,9 +41,9 @@ const Pagination: React.FC = () => {
         pages.push(
           <span
             key={`ellipsis-${i}`}
-            className="px-2 py-1 text-xs sm:text-sm font-semibold rounded-md bg-[#F5F7FA] dark:bg-[#F4F7FE4D] text-[#243045]"
+            className="px-2 py-1 text-sm text-[#243045] dark:text-gray-200"
           >
-            <FaEllipsis className="w-3 h-3 sm:w-4 sm:h-4" />
+            ...
           </span>
         );
         ellipsisAdded = true;
@@ -47,20 +53,12 @@ const Pagination: React.FC = () => {
     return pages;
   };
 
-  const handlePrevious = () => {
-    if (currentPage > 1) setCurrentPage(currentPage - 1);
-  };
-
-  const handleNext = () => {
-    if (currentPage < totalPages) setCurrentPage(currentPage + 1);
-  };
-
   return (
-    <div className="flex justify-center items-center mt-4 space-x-1 sm:space-x-2 mb-4 sm:mb-0 overflow-x-auto px-2">
+    <div className="flex justify-center items-center mt-4 space-x-2">
       <button
-        onClick={handlePrevious}
+        onClick={() => currentPage > 1 && onPageChange(currentPage - 1)}
         disabled={currentPage === 1}
-        className="px-2 py-1 text-xs sm:text-sm font-semibold rounded-md bg-[#F9FBFC] text-[#243045] disabled:opacity-50 dark:bg-[#F4F7FE4D] shadow-md hover:bg-gray-200 disabled:hover:bg-[#F9FBFC]"
+        className="px-2 py-1 text-sm font-semibold rounded-md bg-[#F9FBFC] text-[#243045] disabled:opacity-50"
       >
         <BiChevronLeft className="w-4 h-4" />
       </button>
@@ -68,9 +66,11 @@ const Pagination: React.FC = () => {
       {renderPageNumbers()}
 
       <button
-        onClick={handleNext}
+        onClick={() =>
+          currentPage < totalPages && onPageChange(currentPage + 1)
+        }
         disabled={currentPage === totalPages}
-        className="px-2 py-1 text-xs sm:text-sm font-semibold rounded-md bg-[#F5F7FA] text-[#243045] disabled:opacity-50 shadow-md hover:bg-gray-200 disabled:hover:bg-[#F5F7FA]"
+        className="px-2 py-1 text-sm font-semibold rounded-md bg-[#F9FBFC] text-[#243045] disabled:opacity-50"
       >
         <BiChevronRight className="w-4 h-4" />
       </button>
