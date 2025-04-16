@@ -1,63 +1,29 @@
 import React, { useEffect, useRef, useState } from "react";
 import { GoDotFill } from "react-icons/go";
 import { HiDotsVertical } from "react-icons/hi";
-import img from "/public/product/product.png";
-import Image, { StaticImageData } from "next/image";
 
-interface Product {
-  id: number;
-  name: string;
-  img: string | StaticImageData;
-  slug: string;
-  totalSubCategory: number;
-  status: "Pending" | "Delivered" | "Cancelled" | "In Progress";
-}
-export const sampleProducts: Product[] = [
-  {
-    id: 1,
-    name: "Smartphone",
-    img: img,
-    slug: "smartphone",
-    totalSubCategory: 5,
-    status: "Pending",
-  },
-  {
-    id: 2,
-    name: "Laptop",
-    img: img,
-    slug: "laptop",
-    totalSubCategory: 3,
-    status: "Delivered",
-  },
-  {
-    id: 3,
-    name: "Laptop",
-    img: img,
-    slug: "laptop",
-    totalSubCategory: 3,
-    status: "In Progress",
-  },
-  {
-    id: 4,
-    name: "Laptop",
-    img: img,
-    slug: "laptop",
-    totalSubCategory: 3,
-    status: "Cancelled",
-  },
-];
+import Image from "next/image";
+import { useGetPCategoryTableQuery } from "@/redux/feature/api/p-category/PCategoryApi";
+import Loading from "@/app/loading";
+
 const ProductInfoCategory = () => {
   const [openDropdown, setOpenDropdown] = useState<null | number>(null);
   const [selectedIds, setSelectedIds] = useState<number[]>([]);
   const dropdownRefs = useRef<Record<number, HTMLDivElement | null>>({});
+  const {
+    data: product = [],
+    isLoading,
+    isError,
+    error,
+  } = useGetPCategoryTableQuery();
   const isAllSelected =
-    sampleProducts.length > 0 && selectedIds.length === sampleProducts.length;
+    product.length > 0 && selectedIds.length === product.length;
 
   const handleAllSelect = () => {
     if (isAllSelected) {
       setSelectedIds([]);
     } else {
-      setSelectedIds(sampleProducts.map((data) => data.id));
+      setSelectedIds(product.map((data) => data.id));
     }
   };
 
@@ -86,6 +52,11 @@ const ProductInfoCategory = () => {
     setOpenDropdown(openDropdown === id ? null : id);
   };
 
+  if (isLoading) return <Loading />;
+  if (isError) {
+    console.error("Error fetching products:", error);
+    return <p>Error fetching products.</p>;
+  }
   return (
     <div className="mt-5 bg-primary p-5 rounded-md shadow-md">
       <h2 className="text-color text-xl font-semibold">Category Info</h2>
@@ -119,7 +90,7 @@ const ProductInfoCategory = () => {
             </tr>
           </thead>
           <tbody className="bg-primary">
-            {sampleProducts.map((product) => (
+            {product.map((product) => (
               <tr
                 key={product.id}
                 className={

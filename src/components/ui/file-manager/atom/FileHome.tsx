@@ -1,9 +1,10 @@
 import React, { useRef, useState, useEffect } from "react";
 import Image from "next/image";
 import { HiDotsVertical } from "react-icons/hi";
-import { fileListData } from "@/data/FilesData";
 import Folder from "./Folder";
 import CreateNew from "./CreateNew";
+import { useGetFileManagerQuery } from "@/redux/feature/api/file-manager/FileManagerApi";
+import Loading from "@/app/loading";
 
 const FileHome = () => {
   const [openDropdown, setOpenDropdown] = useState<number | null>(null);
@@ -12,6 +13,12 @@ const FileHome = () => {
   const toggleDropdown = (id: number) => {
     setOpenDropdown((prev) => (prev === id ? null : id)); // toggle logic
   };
+  const {
+    data: product = [],
+    isLoading,
+    isError,
+    error,
+  } = useGetFileManagerQuery();
 
   const handleClickOutside = (event: MouseEvent) => {
     const isOutside = Object.values(dropdownRefs.current).every((ref) => {
@@ -29,6 +36,12 @@ const FileHome = () => {
       document.removeEventListener("mousedown", handleClickOutside);
     };
   }, []);
+
+  if (isLoading) return <Loading />;
+  if (isError) {
+    console.error("Error fetching products:", error);
+    return <p>Error fetching products.</p>;
+  }
 
   return (
     <div>
@@ -85,7 +98,7 @@ const FileHome = () => {
               </tr>
             </thead>
             <tbody className="bg-background">
-              {fileListData.map((product) => (
+              {product.map((product) => (
                 <tr
                   key={product.id}
                   className={

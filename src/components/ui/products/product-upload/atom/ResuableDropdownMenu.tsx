@@ -61,7 +61,7 @@ const ResuableDropdownMenu = <T extends string>({
         <div className="w-full relative input-bg  focus-within:border-blue-500  focus-within:ring-blue-500 border border-[#E6EBEE] dark:border-gray-700 px-3.5 py-4 rounded-md mt-2">
           <div
             className={`w-full text-sm  focus-within:border-blue-500 focus-within:ring-blue-500  flex items-center bg-transparent outline-none cursor-pointer transition-all duration-300 ease-in-out justify-between ${
-              selectedOption ? "text-black" : "text-gray-500"
+              selectedOption ? "text-black dark:text-gray-200" : "text-gray-500"
             }`}
             onClick={() => setIsOpen(!isOpen)}
           >

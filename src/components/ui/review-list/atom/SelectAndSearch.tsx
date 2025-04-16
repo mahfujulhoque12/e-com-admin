@@ -1,26 +1,35 @@
+"use client";
+
 import { useState, useEffect, useRef, ChangeEvent } from "react";
 import { UseFormRegisterReturn } from "react-hook-form";
 import { FaCaretDown } from "react-icons/fa";
-import img from "/public/product/customer.png";
 import Image from "next/image";
 
-interface SelectAndSearchProps<T> {
+interface GenericOption {
+  name: string;
+  email?: string;
+  img: string;
+}
+
+interface SelectAndSearchProps<T extends GenericOption> {
   name?: string;
   label?: string;
-  options: T[];
   errorMessage?: string;
   onSelect: (value: T) => void;
   value?: T | null;
   register?: UseFormRegisterReturn;
   placeholder?: string;
+  options?: T[];
+  isLoading: boolean;
 }
 
-const SelectAndSearch = <T extends string>({
+const SelectAndSearch = <T extends GenericOption>({
   label,
-  options,
   errorMessage,
   onSelect,
   placeholder,
+  options,
+  isLoading,
   value,
 }: SelectAndSearchProps<T>) => {
   const [selectedOption, setSelectedOption] = useState<T | null>(value || null);
@@ -55,76 +64,76 @@ const SelectAndSearch = <T extends string>({
     };
 
     document.addEventListener("mousedown", handleClickOutside);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
-  const filteredOptions = options.filter((option) =>
-    option.toLowerCase().includes(searchTerm.toLowerCase())
+  const filteredOptions = (options || []).filter((opt) =>
+    opt.name.toLowerCase().includes(searchTerm.toLowerCase())
   );
 
   return (
     <div ref={dropdownRef}>
       <div className="w-full flex flex-col">
-        <p className="text-base font-medium mb-2 text-gray-800 dark:text-gray-100">
-          {" "}
-          {label}
-        </p>
+        {label && (
+          <p className="text-base font-medium mb-2 text-gray-800 dark:text-gray-100">
+            {label}
+          </p>
+        )}
 
-        <div className="w-full relative focus-within:border-blue-500 border border-[#E6EBEE] bg-background dark:border-gray-700 px-5 py-3 rounded-md">
+        <div className="w-full relative focus-within:border-blue-500 border border-[#E6EBEE] bg-background dark:border-gray-700 px-5 py-4 rounded-md">
           <div
             className={`flex items-center justify-between cursor-pointer ${
-              selectedOption
-                ? "text-black dark:text-gray-100"
-                : "text-gray-500 dark:text-gray-500"
+              selectedOption ? "text-black dark:text-gray-100" : "text-gray-500"
             }`}
             onClick={() => setIsOpen(!isOpen)}
           >
-            {selectedOption ||
-              (placeholder ? `${placeholder} ${label}` : label)}
+            {selectedOption
+              ? selectedOption.name
+              : placeholder
+              ? `${placeholder} ${label || ""}`
+              : label}
             <span className="text-blue-500">
               <FaCaretDown />
             </span>
           </div>
 
           <ul
-            className={`absolute z-10 w-full bg-primary border border-[#E6EBEE] dark:border-gray-700 rounded-lg shadow-md mt-6 left-0 transition-all duration-300 transform overflow-hidden ${
-              isOpen
-                ? "opacity-100 scale-100 visible"
-                : "opacity-0 scale-95 invisible"
+            className={`absolute z-10 w-full bg-white dark:bg-gray-800 border mt-2 rounded-lg shadow-lg transition-all duration-300 ${
+              isOpen ? "opacity-100 visible" : "opacity-0 invisible"
             }`}
           >
             <input
               type="text"
               placeholder="Search..."
-              className="w-full px-4 py-2 outline-none border-b border-gray-300 dark:border-gray-600"
+              className="w-full px-4 py-4 outline-none border-b border-gray-300 dark:border-gray-600"
               value={searchTerm}
               onChange={handleSearch}
             />
 
-            <div className="max-h-48 overflow-y-auto">
-              {filteredOptions.map((option) => (
+            {!isLoading &&
+              filteredOptions.map((option, idx) => (
                 <li
-                  key={option}
-                  className="flex items-center gap-2 px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600 transition-all duration-200"
+                  key={idx}
+                  className="flex items-center gap-2 px-4 py-2 cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-600"
                   onClick={() => handleSelect(option)}
                 >
-                  <Image src={img} alt="img" width={50} height={50} />
-                  <div className="flex flex-col ">
-                    <span> {option}</span>
-                    <span className="text-gray-700 dark:text-gray-200">
-                      custoemr@gamil.com
-                    </span>
+                  <Image src={option.img} alt="img" width={40} height={40} />
+                  <div className="flex flex-col">
+                    <span>{option.name}</span>
+                    {option.email && (
+                      <span className="text-gray-600 dark:text-gray-200 text-sm">
+                        {option.email}
+                      </span>
+                    )}
                   </div>
                 </li>
               ))}
-              {filteredOptions.length === 0 && (
-                <li className="px-4 py-2 text-gray-400 dark:text-gray-500">
-                  No options found
-                </li>
-              )}
-            </div>
+
+            {!isLoading && filteredOptions.length === 0 && (
+              <li className="px-4 py-2 text-gray-400 dark:text-gray-500">
+                No options found
+              </li>
+            )}
           </ul>
         </div>
       </div>
