@@ -1,4 +1,5 @@
-import { customerGroupData } from "@/data/CusomerGroupData";
+import Loading from "@/app/loading";
+import { useGetGroupCustomerQuery } from "@/redux/feature/api/customer-list/GroupCustomerApi";
 
 import React, { useEffect, useRef, useState } from "react";
 import { GoDotFill } from "react-icons/go";
@@ -10,16 +11,21 @@ const CustomerGroup = () => {
   const [showFullText, setShowFullText] = useState<number | null>(null);
 
   const dropdownRefs = useRef<Record<number, HTMLDivElement | null>>({});
+  const {
+    data: products = [],
+    isLoading,
+    isError,
+    error,
+  } = useGetGroupCustomerQuery();
 
   const isAllSelected =
-    customerGroupData.length > 0 &&
-    selectedIds.length === customerGroupData.length;
+    products.length > 0 && selectedIds.length === products.length;
 
   const handleAllSelect = () => {
     if (isAllSelected) {
       setSelectedIds([]);
     } else {
-      setSelectedIds(customerGroupData.map((data) => data.id));
+      setSelectedIds(products.map((data) => data.id));
     }
   };
 
@@ -51,6 +57,12 @@ const CustomerGroup = () => {
   const handleToggleText = (id: number) => {
     setShowFullText((prev) => (prev === id ? null : id));
   };
+
+  if (isLoading) return <Loading />;
+  if (isError) {
+    console.error("Error fetching products:", error);
+    return <p>Error fetching products.</p>;
+  }
 
   return (
     <div className="mt-5 bg-primary p-5 rounded-md shadow-md">
@@ -92,7 +104,7 @@ const CustomerGroup = () => {
             </tr>
           </thead>
           <tbody className="bg-primary">
-            {customerGroupData.map((product) => (
+            {products.map((product) => (
               <tr
                 key={product.id}
                 className={

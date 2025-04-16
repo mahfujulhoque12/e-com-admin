@@ -25,10 +25,21 @@ export interface AddGroupType {
   groupColor: string;
   groupDes: string;
 }
+// types/CategoryTyes.ts
 
 export interface AdminReviewType {
-  customers: string;
-  product: string;
-  rating: string;
+  customers: {
+    name: string;
+    email: string;
+  }; // 👈 store full customer object
+
+  product: {
+    name: string;
+    email: string;
+  };
+  ratings: {
+    name: string;
+    email: string;
+  };
   review: string;
 }

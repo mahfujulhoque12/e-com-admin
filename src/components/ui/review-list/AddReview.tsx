@@ -4,14 +4,30 @@ import { useForm } from "react-hook-form";
 import { AdminReviewType } from "@/types/CategoryTyes";
 
 import SelectAndSearch from "./atom/SelectAndSearch";
-import {
-  SelectCustomerEnum,
-  SelectPrductEnum,
-  SelectRatingEnum,
-} from "@/types/OrderListType";
+
 import ResuableInput from "../products/product-upload/atom/ResuableInput";
+import {
+  setSelectedCustomer,
+  setSelectedProduct,
+  setSelectedRating,
+} from "@/redux/feature/customer/CustomerSelectionSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
+import { useGetCustomersQuery } from "@/redux/feature/api/customer-api/CustomerApi";
+import { useGetProductsQuery } from "@/redux/feature/api/customer-api/ProductAPi";
+import { useGetRatingQuery } from "@/redux/feature/api/customer-api/RatingApi";
 
 const AddReview = () => {
+  const dispatch = useAppDispatch();
+  const selectedCustomer = useAppSelector(
+    (state) => state.customerSelection.selectedCustomer
+  );
+  const selectedProduct = useAppSelector(
+    (state) => state.customerSelection.selectedProduct
+  );
+  const selectedRating = useAppSelector(
+    (state) => state.customerSelection.selectedRating
+  );
+
   const {
     register,
     handleSubmit,
@@ -22,6 +38,9 @@ const AddReview = () => {
   const onSubmit = (data: AdminReviewType) => {
     console.log(data, "add review");
   };
+  const { data: customers = [], isLoading } = useGetCustomersQuery("");
+  const { data: products = [] } = useGetProductsQuery("");
+  const { data: ratings = [] } = useGetRatingQuery("");
 
   return (
     <div className="mt-5 bg-primary rounded-md shadow-md p-5">
@@ -31,19 +50,18 @@ const AddReview = () => {
           {/* First Name Field */}
           <div className="w-full">
             <SelectAndSearch
-              label="Select A Customers"
-              name="customers" // Fixed typo from "prodcutType"
-              options={Object.values(SelectCustomerEnum)}
-              errorMessage={errors.customers?.message}
-              onSelect={(value) => {
-                setValue("customers", value as SelectCustomerEnum, {
-                  shouldValidate: true,
-                  shouldDirty: true,
-                  shouldTouch: true,
-                });
+              label="Select Customer"
+              name="customers"
+              value={selectedCustomer}
+              options={customers}
+              isLoading={isLoading}
+              onSelect={(val) => {
+                dispatch(setSelectedCustomer(val));
+                setValue("customers", val, { shouldValidate: true });
               }}
+              errorMessage={errors.customers?.message}
               register={register("customers", {
-                required: "customers  is required",
+                required: "Customer is required",
               })}
             />
           </div>
@@ -51,13 +69,14 @@ const AddReview = () => {
             <SelectAndSearch
               label="Select A Product"
               name="product" // Fixed typo from "prodcutType"
-              options={Object.values(SelectPrductEnum)}
+              options={products}
+              value={selectedProduct}
               errorMessage={errors.product?.message}
+              isLoading={isLoading}
               onSelect={(value) => {
-                setValue("product", value as SelectPrductEnum, {
+                dispatch(setSelectedProduct(value));
+                setValue("product", value, {
                   shouldValidate: true,
-                  shouldDirty: true,
-                  shouldTouch: true,
                 });
               }}
               register={register("product", {
@@ -72,17 +91,18 @@ const AddReview = () => {
           <div className="w-full">
             <SelectAndSearch
               label="Select A Rating"
-              name="rating" // Fixed typo from "prodcutType"
-              options={Object.values(SelectRatingEnum)}
-              errorMessage={errors.rating?.message}
+              name="ratings"
+              value={selectedRating}
+              errorMessage={errors.ratings?.message}
+              options={ratings}
+              isLoading={isLoading}
               onSelect={(value) => {
-                setValue("rating", value as SelectRatingEnum, {
+                dispatch(setSelectedRating(value));
+                setValue("ratings", value, {
                   shouldValidate: true,
-                  shouldDirty: true,
-                  shouldTouch: true,
                 });
               }}
-              register={register("rating", {
+              register={register("ratings", {
                 required: "rating  is required",
               })}
             />

@@ -8,7 +8,9 @@ import variationsReducer from "../feature/product-upload/variations/variationsSl
 import mediaReducer from "../feature/product-upload/media/mediaSlice";
 import paymentReducer from "../feature/product-upload/payment/paymentSlice";
 import policyReducer from "../feature/product-upload/policy/policySlice";
-import sidebarReducer from '../feature/sidebar/sidebarSlice';
+import sidebarReducer from "../feature/sidebar/sidebarSlice";
+import customerSelectionReducer from "../feature/customer/CustomerSelectionSlice";
+import inputReducer from "../feature/input/InputSlice";
 
 export const store = configureStore({
   reducer: {
@@ -19,6 +21,8 @@ export const store = configureStore({
     payment: paymentReducer,
     policy: policyReducer,
     sidebar: sidebarReducer,
+    customerSelection: customerSelectionReducer,
+    inputSlice:inputReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddlewares) =>
