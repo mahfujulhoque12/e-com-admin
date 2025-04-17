@@ -11,11 +11,19 @@ interface Product {
     totalCustomer: number;
     status: string;
   }
+
+  interface PaginatedResponse {
+    data: Product[];
+    currentPage: number;
+    totalPages: number;
+    totalItems: number;
+  }
+  
   
 const groupCustomerListApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getGroupCustomer: builder.query<Product[], void>({
-      query: () => "/api/group-customer",
+    getGroupCustomer: builder.query<PaginatedResponse, number>({
+      query: (page=1) => `/api/group-customer?page=${page}`,
     }),
   }),
 });

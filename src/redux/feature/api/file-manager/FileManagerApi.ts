@@ -11,10 +11,17 @@ interface Product {
   members: string[] | StaticImageData[];
 }
 
+interface PaginatedResponse {
+  data: Product[];
+  currentPage: number;
+  totalPages: number;
+  totalItems: number;
+}
+
 export const fileManagerApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getFileManager: builder.query<Product[], void>({
-      query: () => "api/file-manager",
+    getFileManager: builder.query<PaginatedResponse, number>({
+      query: (page=1) => `api/file-manager?page=${page}`,
     }),
   }),
 });

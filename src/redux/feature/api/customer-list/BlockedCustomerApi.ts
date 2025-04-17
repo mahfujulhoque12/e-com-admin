@@ -17,10 +17,17 @@ interface Product {
   phoneNumber: number;
   customerBehave: string;
 }
+interface PaginatedResponse {
+  data: Product[];
+  currentPage: number;
+  totalPages: number;
+  totalItems: number;
+}
+
 const blockCustomerListApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getblockCustomer: builder.query<Product[], void>({
-      query: () => "/api/blocked-customer",
+    getblockCustomer: builder.query<PaginatedResponse, number>({
+      query: (page=1) => `/api/blocked-customer?page=${page}`,
     }),
   }),
 });

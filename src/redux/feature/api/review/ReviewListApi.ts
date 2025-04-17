@@ -15,10 +15,17 @@ interface Product {
   customerName: string;
 }
 
+interface PaginatedResponse {
+  data: Product[];
+  currentPage: number;
+  totalPages: number;
+  totalItems: number;
+}
+
 export const reviewListApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getReviewList: builder.query<Product[], void>({
-      query: () => "api/review-list",
+    getReviewList: builder.query<PaginatedResponse, number>({
+      query: (page = 1) => `api/review-list?page=${page}`,
     }),
   }),
 });

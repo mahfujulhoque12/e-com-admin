@@ -205,7 +205,7 @@ const BannerListWrapper = () => {
           </p>
 
           <div>
-            <Pagination />
+            <Pagination paginationKey="bannerList" />
           </div>
         </div>
       </div>

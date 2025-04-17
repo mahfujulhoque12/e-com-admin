@@ -11,6 +11,7 @@ import policyReducer from "../feature/product-upload/policy/policySlice";
 import sidebarReducer from "../feature/sidebar/sidebarSlice";
 import customerSelectionReducer from "../feature/customer/CustomerSelectionSlice";
 import inputReducer from "../feature/input/InputSlice";
+import paginationReducer from "../feature/pagianation/paginationSlice";
 
 export const store = configureStore({
   reducer: {
@@ -22,7 +23,8 @@ export const store = configureStore({
     policy: policyReducer,
     sidebar: sidebarReducer,
     customerSelection: customerSelectionReducer,
-    inputSlice:inputReducer,
+    inputSlice: inputReducer,
+    pagination: paginationReducer,
     [apiSlice.reducerPath]: apiSlice.reducer,
   },
   middleware: (getDefaultMiddlewares) =>

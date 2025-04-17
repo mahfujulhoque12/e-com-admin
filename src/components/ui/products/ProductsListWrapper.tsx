@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from "react";
 import SearchAndFilter from "./atom/SearchAndFilter";
 import { IoMdClose } from "react-icons/io";
 import { useForm } from "react-hook-form";
-import Pagination from "./atom/Pagianation";
+
 import ProductsDropdown from "./atom/ProductsDropdown";
 import {
   BrandEnum,
@@ -207,17 +207,9 @@ const ProductsListWrapper = () => {
         </form>
 
         {/* options end  */}
-        <ProductsTable />
+        <ProductsTable/>
 
-        <div className="mt-5 flex items-center justify-between flex-col md:flex-row">
-          <p className="text-sm sm:text-base font-semibold text-[#455468] dark:text-gray-300">
-            Displaying product entries up to 100{" "}
-          </p>
-
-          <div>
-            <Pagination />
-          </div>
-        </div>
+       
       </div>
     </div>
   );

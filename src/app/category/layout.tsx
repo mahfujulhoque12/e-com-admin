@@ -51,7 +51,7 @@ export default function CategoryLayout({
   return (
     <div className="min-h-screen relative">
       {/* top bar */}
-      <div className="sticky top-0 left-0 z-50 min-h-[14vh] ">
+      <div className="sticky top-0 left-0 z-50 min-h-[14vh] bg-primary ">
         <Topbar
           handleHamburgerClick={handleHamburgerClick}
           title="Categories"
@@ -60,7 +60,7 @@ export default function CategoryLayout({
         <TabNavigation tabs={tabs} />
       </div>
       {/* main content */}
-      <div className=" min-h-[86vh]">{children}</div>
+      <div className=" min-h-[86vh] mt-5">{children}</div>
     </div>
   );
 }

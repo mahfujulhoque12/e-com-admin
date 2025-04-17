@@ -13,11 +13,18 @@ export interface Product {
   category: number;
   status: string;
 }
+interface PaginatedResponse {
+  data: Product[];
+  currentPage: number;
+  totalPages: number;
+  totalItems: number;
+}
+
 
 export const vendorTableAPi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getVendorTable: builder.query<Product[], void>({
-      query: () => "/api/vendor-table",
+    getVendorTable: builder.query<PaginatedResponse, number>({
+      query: (page=1) => `/api/vendor-table?page=${page}`,
     }),
   }),
 });
