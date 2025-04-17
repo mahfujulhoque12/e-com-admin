@@ -2,27 +2,32 @@ import Loading from "@/app/loading";
 
 import { useGetPaymentListQuery } from "@/redux/feature/api/payment-list/PaymentListAPi";
 import Image from "next/image";
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useMemo, useRef, useState } from "react";
 import { GoDotFill } from "react-icons/go";
 import { HiDotsVertical } from "react-icons/hi";
 import Pagination from "../../products/atom/Pagianation";
+import { setTotalPages } from "@/redux/feature/pagianation/paginationSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 
-interface PaymentListTableProps {
-  page: number;
-  setPage: (page: number) => void;
-}
-
-const PaymentListTable: React.FC<PaymentListTableProps> = ({
-  page,
-  setPage,
-}) => {
+const PaymentListTable = () => {
   const [openDropdown, setOpenDropdown] = useState<null | number>(null);
   const [selectedIds, setSelectedIds] = useState<number[]>([]);
 
   const dropdownRefs = useRef<Record<number, HTMLDivElement | null>>({});
-  const { data, isLoading, isError, error } = useGetPaymentListQuery(page);
-  const product = data?.data || [];
-  const totalPages = data?.totalPages || 1;
+  const key = "paymentList";
+  const dispatch = useAppDispatch();
+  const currentPage = useAppSelector(
+    (state) => state.pagination[key]?.currentPage
+  );
+  const { data, isLoading, isError, error } =
+    useGetPaymentListQuery(currentPage);
+  const product = useMemo(() => data?.data || [], [data?.data]);
+
+  useEffect(() => {
+    if (data && typeof data.totalPages === "number") {
+      dispatch(setTotalPages({ key, totalPages: data.totalPages }));
+    }
+  }, [data, dispatch]);
 
   // table Dropdown
 
@@ -35,6 +40,10 @@ const PaymentListTable: React.FC<PaymentListTableProps> = ({
       setOpenDropdown(null);
     }
   };
+  useEffect(() => {
+    // Reset dropdownRefs when product data changes
+    dropdownRefs.current = {};
+  }, [product]);
 
   useEffect(() => {
     document.addEventListener("mousedown", handleClickOutside);
@@ -220,11 +229,7 @@ const PaymentListTable: React.FC<PaymentListTableProps> = ({
         </p>
 
         <div>
-          <Pagination
-            currentPage={page}
-            totalPages={totalPages}
-            onPageChange={(newPage) => setPage(newPage)}
-          />
+          <Pagination paginationKey="paymentList" />
         </div>
       </div>
     </div>

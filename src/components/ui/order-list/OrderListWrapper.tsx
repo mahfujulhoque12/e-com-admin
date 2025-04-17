@@ -206,7 +206,7 @@ const OrderListWrapper = () => {
           </p>
 
           <div>
-            <Pagination />
+            <Pagination paginationKey="orderList" />
           </div>
         </div>
       </div>

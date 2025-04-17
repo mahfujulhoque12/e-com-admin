@@ -13,11 +13,18 @@ export interface Product {
   category: number;
   status: string;
 }
+interface PaginatedResponse {
+  data: Product[];
+  currentPage: number;
+  totalPages: number;
+  totalItems: number;
+}
+
 
 export const commissionTableApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getCommissionTable: builder.query<Product[], void>({
-      query: () => "/api/commission-table",
+    getCommissionTable: builder.query<PaginatedResponse, number>({
+      query: (page=1) => `/api/commission-table?page=${page}`,
     }),
   }),
 });

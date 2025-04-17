@@ -17,7 +17,7 @@ import { ShippinEnum } from "@/types/VariationInput";
 import { initialFilters } from "../products/ProductsListWrapper";
 import SearchAndFilter from "../products/atom/SearchAndFilter";
 import ProductsDropdown from "../products/atom/ProductsDropdown";
-import Pagination from "../products/atom/Pagianation";
+
 import BlockCustomerTable from "./atom/BlockCustomerTable";
 
 const BlockedCustomer = () => {
@@ -206,16 +206,6 @@ const BlockedCustomer = () => {
 
         {/* options end  */}
         <BlockCustomerTable />
-
-        <div className="mt-5 flex items-center justify-between flex-col md:flex-row">
-          <p className="text-sm sm:text-base font-semibold text-[#455468] dark:text-gray-300">
-            Displaying product entries up to 100{" "}
-          </p>
-
-          <div>
-            <Pagination />
-          </div>
-        </div>
       </div>
     </div>
   );

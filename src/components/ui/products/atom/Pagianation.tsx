@@ -1,17 +1,27 @@
+import { setCurrentPage } from "@/redux/feature/pagianation/paginationSlice";
+import { useAppDispatch, useAppSelector } from "@/redux/hook";
 import { BiChevronLeft, BiChevronRight } from "react-icons/bi";
+import { BsThreeDots } from "react-icons/bs";
 
 interface PaginationProps {
-  currentPage?: number | undefined;
-  totalPages?: number | undefined;
-  onPageChange?: (page: number) => void;
+  paginationKey: string; // 👈 accepts the scope key like 'review'
 }
 
-const Pagination: React.FC<PaginationProps> = ({
-  currentPage = 1,
-  totalPages = 1,
-  onPageChange = () => {},
-}) => {
+const Pagination: React.FC<PaginationProps> = ({ paginationKey }) => {
+  const dispatch = useAppDispatch();
+
+  const currentPage = useAppSelector(
+    (state) => state.pagination[paginationKey]?.currentPage || 1
+  );
+  const totalPages = useAppSelector(
+    (state) => state.pagination[paginationKey]?.totalPages || 1
+  );
+
   const pageRange = 1;
+
+  const handlePageChange = (page: number) => {
+    dispatch(setCurrentPage({ key: paginationKey, page }));
+  };
 
   const renderPageNumbers = () => {
     const pages = [];
@@ -26,7 +36,7 @@ const Pagination: React.FC<PaginationProps> = ({
         pages.push(
           <button
             key={i}
-            onClick={() => onPageChange(i)}
+            onClick={() => handlePageChange(i)}
             className={`px-2 py-1 rounded-md text-sm font-semibold mx-1 transition ${
               i === currentPage
                 ? "bg-[#1571E7] text-white"
@@ -43,7 +53,7 @@ const Pagination: React.FC<PaginationProps> = ({
             key={`ellipsis-${i}`}
             className="px-2 py-1 text-sm text-[#243045] dark:text-gray-200"
           >
-            ...
+            <BsThreeDots />
           </span>
         );
         ellipsisAdded = true;
@@ -56,7 +66,7 @@ const Pagination: React.FC<PaginationProps> = ({
   return (
     <div className="flex justify-center items-center mt-4 space-x-2">
       <button
-        onClick={() => currentPage > 1 && onPageChange(currentPage - 1)}
+        onClick={() => currentPage > 1 && handlePageChange(currentPage - 1)}
         disabled={currentPage === 1}
         className="px-2 py-1 text-sm font-semibold rounded-md bg-[#F9FBFC] text-[#243045] disabled:opacity-50"
       >
@@ -67,7 +77,7 @@ const Pagination: React.FC<PaginationProps> = ({
 
       <button
         onClick={() =>
-          currentPage < totalPages && onPageChange(currentPage + 1)
+          currentPage < totalPages && handlePageChange(currentPage + 1)
         }
         disabled={currentPage === totalPages}
         className="px-2 py-1 text-sm font-semibold rounded-md bg-[#F9FBFC] text-[#243045] disabled:opacity-50"

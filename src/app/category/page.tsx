@@ -3,11 +3,7 @@ import CategoryWrapper from "@/components/ui/category/CategoryWrapper";
 import React from "react";
 
 const Page = () => {
-  return (
-    <div>
-      <CategoryWrapper />
-    </div>
-  );
+  return <CategoryWrapper />;
 };
 
 export default Page;

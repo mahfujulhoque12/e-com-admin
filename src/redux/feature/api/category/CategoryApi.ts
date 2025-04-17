@@ -10,10 +10,16 @@ interface Product {
   status: string;
 }
 
+interface PaginatedResponse {
+    data: Product[];
+    currentPage: number;
+    totalPages: number;
+    totalItems: number;
+  }
 const categoryApi = apiSlice.injectEndpoints({
     endpoints:(bulder)=>({
-        getCategoryTable:bulder.query<Product[],void>({
-            query:()=>"api/category"
+        getCategoryTable:bulder.query<PaginatedResponse,number>({
+            query:(page=1)=>`api/category?page=${page}`
         })
     })
 })

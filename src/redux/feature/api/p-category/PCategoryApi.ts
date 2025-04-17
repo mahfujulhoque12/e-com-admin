@@ -1,4 +1,4 @@
-import { apiSlice } from './../apiSlice';
+import { apiSlice } from "./../apiSlice";
 import { StaticImageData } from "next/image";
 
 interface Product {
@@ -10,13 +10,19 @@ interface Product {
   status: string;
 }
 
+interface PaginatedResponse {
+  data: Product[];
+  currentPage: number;
+  totalPages: number;
+  totalItems: number;
+}
 
-const pCategoryApi =apiSlice.injectEndpoints({
-    endpoints:(builder)=>({
-        getPCategoryTable :builder.query<Product[],void>({
-            query:()=>"api/p-category",
-        })
-    })
-})
+const pCategoryApi = apiSlice.injectEndpoints({
+  endpoints: (builder) => ({
+    getPCategoryTable: builder.query<PaginatedResponse, number>({
+      query: (page=1) => `api/p-category?page=${page}`,
+    }),
+  }),
+});
 
-export const {useGetPCategoryTableQuery}=pCategoryApi;
+export const { useGetPCategoryTableQuery } = pCategoryApi;

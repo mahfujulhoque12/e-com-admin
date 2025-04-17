@@ -17,10 +17,17 @@ interface Product {
   phoneNumber: number;
   customerBehave: string;
 }
+interface PaginatedResponse {
+  data: Product[];
+  currentPage: number;
+  totalPages: number;
+  totalItems: number;
+}
+
 const customerListApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getCustomerListApi: builder.query<Product[], void>({
-      query: () => "api/customer-list",
+    getCustomerListApi: builder.query<PaginatedResponse, number>({
+      query: (page=1) => `api/customer-list?page=${page}`,
     }),
   }),
 });

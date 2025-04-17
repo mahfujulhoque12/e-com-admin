@@ -1,9 +1,9 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { StaticImageData } from "next/image";
 
-// Import your images
-import img from "/public/product/customer.png";
-import locationImg from "/public/product/location.png";
+// Use string paths for safe JSON responses
+const img = "/product/customer.png";
+const locationImg = "/product/location.png";
 
 interface Product {
   id: number;
@@ -22,121 +22,56 @@ interface Product {
   customerBehave: string;
 }
 
-const customerListData: Product[] = [
-  {
-    id: 1,
-    orderNumber: 287402514554,
-    locationImg: locationImg,
-    price: 2152,
-    status: "Active",
-    customerNumber: 61412345678,
-    email: "John.Doe@example.com",
-    date: "2025-04-01",
-    totalSpent: 8541,
-    location: "Bangladesh",
-    phoneNumber: 1615874586,
-    customerBehave: "Good Customer",
-    customerName: "John Doe",
-    img: img,
-  },
-  {
-    id: 2,
-    orderNumber: 287402514554,
-    img: img,
-    locationImg: locationImg,
-    price: 2152,
-    status: "Active",
-    customerName: "John Doe",
-    customerNumber: 61412345678,
-    email: "John.Doe@example.com",
-    date: "2025-04-01",
-    totalSpent: 8541,
-    location: "Bangladesh",
-    phoneNumber: 1615874586,
-    customerBehave: "Bad Customer",
-  },
-  {
-    id: 3,
-    orderNumber: 287402514554,
-    img: img,
-    locationImg: locationImg,
-    price: 2152,
-    status: "Active",
-    customerName: "John Doe",
-    customerNumber: 61412345678,
-    email: "John.Doe@example.com",
-    date: "2025-04-01",
-    totalSpent: 8541,
-    phoneNumber: 1615874586,
-    location: "Bangladesh",
-    customerBehave: "Good Customer",
-  },
-  {
-    id: 4,
-    orderNumber: 287402514554,
-    img: img,
-    locationImg: locationImg,
-    price: 2152,
-    status: "Inactive",
-    customerName: "John Doe",
-    customerNumber: 61412345678,
-    email: "John.Doe@example.com",
-    date: "2025-04-01",
-    totalSpent: 8541,
-    phoneNumber: 1615874586,
-    location: "Bangladesh",
-    customerBehave: "Good Customer",
-  },
-  {
-    id: 5,
-    orderNumber: 287402514554,
-    img: img,
-    locationImg: locationImg,
-    price: 2152,
-    status: "Inactive",
-    customerName: "John Doe",
-    customerNumber: 61412345678,
-    email: "John.Doe@example.com",
-    date: "2025-04-01",
-    totalSpent: 8541,
-    phoneNumber: 1615874586,
-    location: "Bangladesh",
-    customerBehave: "Bad Customer",
-  },
-  {
-    id: 6,
-    orderNumber: 287402514554,
-    img: img,
-    locationImg: locationImg,
-    price: 2152,
-    status: "Inactive",
-    customerName: "John Doe",
-    customerNumber: 61412345678,
-    email: "John.Doe@example.com",
-    date: "2025-04-01",
-    totalSpent: 8541,
-    phoneNumber: 1615874586,
-    location: "Bangladesh",
-    customerBehave: "Bad Customer",
-  },
-  {
-    id: 7,
-    orderNumber: 287402514554,
-    img: img,
-    locationImg: locationImg,
-    price: 2152,
-    status: "Inactive",
-    customerName: "John Doe",
-    customerNumber: 61412345678,
-    email: "John.Doe@example.com",
-    date: "2025-04-01",
-    totalSpent: 8541,
-    phoneNumber: 1615874586,
-    location: "Bangladesh",
-    customerBehave: "Good Customer",
-  },
-];
+const statuses = ["Active", "Inactive"];
+const behaves = ["Good Customer", "Bad Customer"];
+const names = ["John Doe", "Jane Smith", "Ali Khan", "Emily Rose", "Tom Hardy"];
+const locations = ["Bangladesh", "Australia", "USA", "UK", "Canada"];
 
-export async function GET() {
-  return NextResponse.json(customerListData);
+const generateMockCustomers = (count: number): Product[] => {
+  const customers: Product[] = [];
+
+  for (let i = 1; i <= count; i++) {
+    const name = names[i % names.length];
+    const location = locations[i % locations.length];
+    const status = statuses[i % statuses.length];
+    const behavior = behaves[i % behaves.length];
+
+    customers.push({
+      id: i,
+      orderNumber: 287402514000 + i,
+      img,
+      locationImg,
+      price: 1500 + Math.floor(Math.random() * 1000),
+      status,
+      customerName: name,
+      customerNumber: 61412340000 + i,
+      email: `${name.toLowerCase().replace(" ", ".")}@example.com`,
+      date: `2025-04-${((i % 30) + 1).toString().padStart(2, "0")}`,
+      totalSpent: 5000 + i * 85,
+      location,
+      phoneNumber: 1615000000 + i,
+      customerBehave: behavior,
+    });
+  }
+
+  return customers;
+};
+
+const customerListData: Product[] = generateMockCustomers(50);
+
+export async function GET(request: NextRequest) {
+  const { searchParams } = new URL(request.url);
+  const page = parseInt(searchParams.get("page") || "1");
+  const limit = 5;
+
+  const start = (page - 1) * limit;
+  const end = start + limit;
+  const data = customerListData.slice(start, end);
+
+  return NextResponse.json({
+    data,
+    currentPage: page,
+    totalPages: Math.ceil(customerListData.length / limit),
+    totalItems: customerListData.length,
+  });
 }

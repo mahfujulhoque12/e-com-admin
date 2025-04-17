@@ -26,7 +26,7 @@ const PaymentListWrapper = () => {
   const [isCalendarOpen, setIsCalendarOpen] = useState(false);
 
   const calendarRef = useRef<HTMLDivElement>(null);
-  const [page, setPage] = useState(1);
+
 
   const removeFilter = (filterName: string) => {
     setActiveFilters((filters) => filters.filter((f) => f !== filterName));
@@ -200,7 +200,7 @@ const PaymentListWrapper = () => {
         </form>
 
         {/* options end  */}
-        <PaymentListTable page={page} setPage={setPage} />
+        <PaymentListTable />
 
       </div>
     </div>

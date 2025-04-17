@@ -10,10 +10,17 @@ interface Product {
   status: string;
 }
 
+interface PaginatedResponse {
+  data: Product[];
+  currentPage: number;
+  totalPages: number;
+  totalItems: number;
+}
+
 const pVendorCategoryApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getPVendorCategoryTable: builder.query<Product[], void>({
-      query: () => "/api/p-vendor-category",
+    getPVendorCategoryTable: builder.query<PaginatedResponse, number>({
+      query: (page=1) => `/api/p-vendor-category?page=${page}`,
     }),
   }),
 });

@@ -10,10 +10,18 @@ interface Product {
   status: string;
 }
 
+
+interface PaginatedResponse {
+  data: Product[];
+  currentPage: number;
+  totalPages: number;
+  totalItems: number;
+}
+
 const vendorBrandApi = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
-    getVendorBrand: builder.query<Product[], void>({
-      query: () => "/api/vendor-brand",
+    getVendorBrand: builder.query<PaginatedResponse, number>({
+      query: (page=1) => `/api/vendor-brand?page=${page}`,
     }),
   }),
 });
